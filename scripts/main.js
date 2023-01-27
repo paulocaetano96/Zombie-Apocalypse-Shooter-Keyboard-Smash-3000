@@ -3,17 +3,19 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-let playerName = document.getElementById('player-name').value;
-if(!playerName) playerName = 'Ramiro';
+/* let playerName = document.getElementById('player-name').value;
+if(!playerName) playerName = 'Ramiro'; */
+let playerImg = '../docs/assets/images/chieficon.png'
 
-const player = new Player(canvas.width / 2, canvas.height / 2, canvas.width, canvas.height, 100, 1, 1, ctx, img, 'Ramiro')
+const player = new Player(canvas.width / 2, canvas.height / 2, 70, 50, 100, 5, 5, ctx, playerImg, 'Ramiro')
+const enemies = new Enemy(2, 10, 20, 20, 50, ctx, playerImg)
+const boss = new Boss(2, 10, 20, 20, 50, ctx, playerImg)
+const newGame = new Game(ctx, player, enemies, boss, canvas, 5, 5);
 
-window.onload = () => {
-document.getElementById('start-button').onclick = () => {
 
-    const newGame = new Game(ctx, player, enemies, boss, canvas);
+document.getElementById('start-game-button').onclick = () => {  
+
     newGame.start();
-    
-}
 
 }
+
