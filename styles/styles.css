@@ -1,0 +1,130 @@
+* {
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+body {
+    background-image: url('/docs/assets/images/backgroundimg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#page-wide-div {
+    animation: fadeIn 2s;  
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+#title, #middle-section {
+    opacity: 0;
+    animation: fadeIn 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+
+#title-div h1 { 
+    padding-top: 10vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-bottom: 10vh;
+    
+    text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 5vw;
+    transform: skewX(10deg);
+    color:rgb(192,192,192);
+    text-shadow: 2px 2px 15px rgb(243, 48, 214);
+    display: flex;
+    justify-content: center;
+
+}
+
+
+#middle-section {
+    display: flex;
+    height: 50vh;
+    justify-content: center;  
+}
+
+
+ul{
+    display: flex;
+    list-style-type: none;
+    margin: 0 auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 60vh;
+}
+
+#start-game-button {
+    display: flex;
+    height: 9vh;
+    width: 15vw;
+    font-size:3vh;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 2px;
+    color:antiquewhite;
+    background-color: rgb(27, 23, 23);
+    margin: 0 auto;
+    border-width: 5px;
+    border-color: rgb(255, 164, 17);
+    border-radius: 30px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#start-game-button:hover {
+    animation-delay: 0.5s;
+    height: 13vh;
+    width: 18vw;
+    background-color: rgb(255, 164, 17);
+    box-shadow: 0px 0px 26px 8px rgb(255,255,255);
+    font-size: 5vh;
+    letter-spacing: 3px;
+    transition-duration: 0.8s;
+}
+
+#highscore-button, #credits-button, #exit-button {
+    display: flex;
+    border-radius: 50px;
+    font-size:3vh;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    height: 7vh;
+    width: 10vw;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(27, 23, 23);
+    color:antiquewhite;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-width: 5px;
+    border-color: rgb(243, 48, 214);  
+}
+
+#highscore-button:hover, #credits-button:hover, #exit-button:hover{
+    animation-delay: 0.5s;
+    height: 8vh;
+    width: 11vw;
+    background-color: rgb(243, 48, 214);
+    box-shadow: 0px 0px 26px 8px rgb(255,255,255);
+    transition-duration: 0.25s;
+    letter-spacing: 0.15em;
+}
+
+
+
