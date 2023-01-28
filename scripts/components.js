@@ -1,7 +1,9 @@
 /** @type {HTMLCanvasElement} */
 
+//Player class
+//Used for the player character
 class Player {
-    constructor(x, y, width, height, hp, speedX, speedY, ctx, img, name, mov){
+    constructor(x, y, width, height, hp, speedX, speedY, ctx, img, name){
 
         this.x = x;
         this.y = y;
@@ -13,15 +15,13 @@ class Player {
         this.ctx = ctx;
         this.img = img;
         this.name = name;
-        this.mov = mov;
+ 
 
         
 
     }
 
     draw(){
-
-        
 
         const playerImg = new Image();
         playerImg.src = this.img;
@@ -65,6 +65,8 @@ class Player {
     }
 }
 
+//Enemy class
+//Used for the normal enemies
 class Enemy {
 
     constructor(x, y, width, height, hp, ctx, img){
@@ -81,10 +83,22 @@ class Enemy {
 
     draw(){
 
+        const enemyImg = new Image();
+        enemyImg.src = this.img;
+        this.ctx.drawImage(enemyImg, this.x, this.y, this.width, this.height)
+        
+        
+
     }
 
     newPos(){
 
+        if(player.x < this.x) this.x -=1;
+        else this.x +=1;
+
+        if(player.y < this.y) this.y -=1;
+        else this.y +=1;
+        
         
     }
 
@@ -111,6 +125,10 @@ class Enemy {
 
 
 }
+
+//Boss Class
+//Used for the last special enemy
+//Created a new class to be easier to understand when the boss will deploy on the game engine
 
 class Boss extends Enemy {
 
