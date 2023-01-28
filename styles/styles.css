@@ -13,32 +13,58 @@ body {
     height: 100vh;
     width: 100vw;
     font-family: 'Roboto', sans-serif;
-
 }
 
-#page-wide-div {
+/* #page-wide-div {
     animation: fadeIn 2s;  
-}
+} */
 
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
 }
 
-#title, #middle-section {
+/* #title, #middle-section {
     opacity: 0;
     animation: fadeIn 2s;
     animation-delay: 1s;
     animation-fill-mode: forwards;
+} */
+
+
+#middle-section {
+    display: flex;
+    height: 50vh;
+    width: 100vw;
+    justify-content: space-evenly;  
+}
+
+#game-controls-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 500px;
+    text-align: center;
+    background-color: white;
+}
+
+#bonus-story-line-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#canvas {
+    display: none;
 }
 
 
 #title-div h1 { 
-    padding-top: 10vh;
+    padding-top: 8vh;
     margin-left: 1vw;
     margin-right: 1vw;
-    margin-bottom: 10vh;
-    
+    margin-bottom: 8vh;   
     text-align: center;
     font-family: 'VT323', monospace;
     font-size: 5vw;
@@ -47,16 +73,15 @@ body {
     text-shadow: 2px 2px 15px rgb(243, 48, 214);
     display: flex;
     justify-content: center;
-
 }
 
-
-#middle-section {
+#bonus-story-line-style-button {
     display: flex;
-    height: 50vh;
-    justify-content: center;  
+    text-align: center;
+    writing-mode:vertical-rl;
+    text-orientation: upright;
+    height: 10vh;
 }
-
 
 ul{
     display: flex;
@@ -67,6 +92,7 @@ ul{
     align-items: center;
     justify-content: space-evenly;
     height: 60vh;
+    margin-left: 100px;
 }
 
 #start-game-button {
@@ -98,7 +124,7 @@ ul{
     transition-duration: 0.8s;
 }
 
-#highscore-button, #credits-button, #exit-button {
+#highscore-button, #credits-button, #exit-button, #bonus-story-line-style-button {
     display: flex;
     border-radius: 50px;
     font-size:3vh;
@@ -116,7 +142,7 @@ ul{
     border-color: rgb(243, 48, 214);  
 }
 
-#highscore-button:hover, #credits-button:hover, #exit-button:hover{
+#highscore-button:hover, #credits-button:hover, #exit-button:hover {
     animation-delay: 0.5s;
     height: 8vh;
     width: 11vw;
@@ -126,5 +152,27 @@ ul{
     letter-spacing: 0.15em;
 }
 
+#bonus-story-line-style-button {
+    
+    border-radius: 30%;
+    height: 30vh;
+    background-image: url('/');
+    
+    background-size:cover;
+    background-repeat: no-repeat;
+
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    text-orientation: upright;
+    color: antiquewhite;
+}
+
+#bonus-story-line-style-button:hover{
+    animation-delay: 0.9s;
+
+}
 
 
