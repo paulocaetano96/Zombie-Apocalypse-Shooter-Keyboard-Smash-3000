@@ -152,27 +152,34 @@ ul{
     letter-spacing: 0.15em;
 }
 
-#bonus-story-line-style-button {
-    
-    border-radius: 30%;
-    height: 30vh;
-    background-image: url('/');
-    
-    background-size:cover;
-    background-repeat: no-repeat;
-
-}
-
 a {
     text-decoration: none;
     text-align: center;
     text-orientation: upright;
     color: antiquewhite;
+    display: inline-block;
+    white-space: pre;
+    text-align: center;
 }
+
+a span {
+    display: block;
+}
+
+#bonus-story-line-style-button {
+    
+    border-radius: 50%;
+    height: 20vh;
+    background-image: url('/');
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
+
 
 #bonus-story-line-style-button:hover{
     animation-delay: 0.9s;
-
+    box-shadow: 0px 0px 26px 8px rgb(255,255,255);
 }
 
 
