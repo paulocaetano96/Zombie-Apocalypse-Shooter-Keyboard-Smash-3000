@@ -36,11 +36,3 @@ document.getElementById('start-game-button').onclick = () => {
 document.getElementById("exit-button").onclick = () => {
     window.close();
 }
-
-document.getElementById("highscore-button").onclick = () => {
-    location.href = "/highscore.html"
-}
-
-document.getElementById("home-page-button").onclick = () => {
-    location.href = "/index.html"
-}
