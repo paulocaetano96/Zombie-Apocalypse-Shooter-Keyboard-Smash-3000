@@ -126,7 +126,7 @@ class Enemy {
         return this.x + this.w;
     }
 
-    gotShot(this.shot){
+    gotShot(){
 
     /*     
         return !(this.bottom() < this.shot.top() || this.top() > this.shot.bottom() || 
