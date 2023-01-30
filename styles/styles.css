@@ -34,22 +34,26 @@ body {
 
 #middle-section {
     display: flex;
-    height: 50vh;
+    height: 70vh;
     width: 100vw;
     justify-content: space-evenly;  
 }
 
 #game-controls-info {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: nowrap;
-    height: 500px;
+    
+    margin-top: 110px;
+    margin-left: 50px;
+    padding-left: 5px;
+    padding-right: 5px;    
+    line-height: 40px;
     text-align: center;
-    background-color: white;
+    height: 300px;
+    background-color: rgb(91, 91, 208, 0.3);
+    border-radius: 30px;
+    border: 1px solid rgb(243, 48, 214);
 }
 
-#bonus-story-line-div {
+#bonus-story-line-div, #game-controls-info  {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,6 +61,10 @@ body {
 
 #canvas {
     display: none;
+    border-radius: 50px;
+    border-color: antiquewhite;
+    background-image: url('');
+    
 }
 
 
@@ -81,6 +89,29 @@ body {
     writing-mode:vertical-rl;
     text-orientation: upright;
     height: 10vh;
+}
+
+div h3{
+    color: rgb(243, 48, 214);
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-family: 'VT323', monospace;
+}
+
+ol {
+    color: antiquewhite;
+    font-size: 20px;
+    list-style-type: none;
+    font-family: 'VT323', monospace;
+
+}
+
+.middlepart-middle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 ul{
