@@ -66,12 +66,7 @@ class Player {
         return this.x + this.w;
     }
 
-    crashWith(enemy){
-
-        return !(
-            this.bottom() < enemy.top() && this.top() > enemy.bottom() &&
-            this.right() < enemy.left() && this.left() > enemy.right()
-        ); 
+    crashWith(){
 
     }
 }
@@ -131,7 +126,7 @@ class Enemy {
         return this.x + this.w;
     }
 
-    gotShot(){
+    gotShot(this.shot){
 
     /*     
         return !(this.bottom() < this.shot.top() || this.top() > this.shot.bottom() || 
