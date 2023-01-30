@@ -35,9 +35,11 @@ class Game {
         this.updateEnemies();                         
         for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
             this.enemies[i].newPos();
-            /* let dead = this.enemies[i].gotShot();
-            if(dead) this.enemies.splice(i, 1) */
         }
+
+        this.enemies.forEach((enemy) => {
+            this.shot.shotEnd(enemy);
+        })
         /* this.shot.draw();
         */
         
@@ -61,6 +63,8 @@ class Game {
 
         for(let i = 0; i < this.enemies.length; i++){
             this.enemies[i].draw();
+            let enemyDead = this.enemies[i].gotShot(this.shot);
+            //if(enemyDead) this.enemies.splice(i, 1)
 
         }
 
@@ -74,7 +78,7 @@ class Game {
             let randomIndex = Math.floor(Math.random() * randomArray.length);
            
 
-            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png', this.shot));
+            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png',this.shot));
         }
     }
 
@@ -90,6 +94,4 @@ class Game {
 
    
 }
-
-
 

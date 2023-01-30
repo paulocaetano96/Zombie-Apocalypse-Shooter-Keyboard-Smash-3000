@@ -41,7 +41,7 @@ body {
     font-size: 5vw;
     transform: skewX(10deg);
     color:aliceblue 	;
-    text-shadow: 2px 2px 15px rgb(243, 48, 214);
+    text-shadow: 5px 5px 15px rgb(243, 48, 214);
     display: flex;
     justify-content: center;
 }
@@ -58,8 +58,8 @@ body {
     
     margin-top: 110px;
     margin-left: 50px;
-    padding-left: 5px;
-    padding-right: 5px;    
+    padding-left: 7px;
+    padding-right: 7px;    
     line-height: 40px;
     text-align: center;
     height: 300px;
@@ -96,10 +96,14 @@ body {
 
 div h3{
     color: rgb(243, 48, 214);
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.5);
     text-align: center;
     margin-bottom: 15px;
     font-size: 25px;
     font-family: 'VT323', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 ol {
@@ -149,7 +153,7 @@ ul{
 }
 
 #start-game-button:hover {
-    animation-delay: 0.5s;
+    animation-delay: 1s;
     height: 13vh;
     width: 18vw;
     background-color: rgb(255, 164, 17);
@@ -201,8 +205,7 @@ a span {
     display: block;
 }
 
-#bonus-story-line-style-button {
-    
+#bonus-story-line-style-button {   
     border-radius: 50%;
     height: 20vh;
     background-image: url('/');
@@ -213,7 +216,6 @@ a span {
 
 
 #bonus-story-line-style-button:hover{
-    
     box-shadow: 0px 0px 26px 8px rgb(255,255,255);
     height: 24vh;
     width: 12vw;

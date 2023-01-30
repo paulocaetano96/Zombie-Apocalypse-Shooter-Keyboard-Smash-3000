@@ -1,7 +1,7 @@
 /** @type {HTMLCanvasElement} */
 
 class Shooting{
-    constructor(x, y, player, canvas, img, speed, ctx){
+    constructor(x, y, player, canvas, img, speed, ctx, lastKey){
 
     this.x = x;
     this.y = y;
@@ -15,7 +15,6 @@ class Shooting{
     this.intervalId = null;
     this.firstX = 0;
     this.firstY = 0;
-    this.shotFired = false;
 
 }
 
@@ -102,12 +101,7 @@ class Shooting{
         
        
 
-        if(this.x >= this.canvas.width) this.stopShot();
-        else if(this.x <= 0) this.stopShot();
-        else if(this.y >= this.canvas.width) this.stopShot();
-        else if(this.y <= 0) this.stopShot();
-        //else if (!(this.top() >= this.shot.bottom() || this.bottom() <= this.shot.top() || 
-        //this.right >= this.shot.left() || this.left <= this.shot.right())) this.stopShot();
+        
 
     
 
@@ -115,9 +109,14 @@ class Shooting{
 
     }
 
-    top(){
-        return this.y;
-    }
+    shotEnd(enemy){
+
+        if(this.x >= this.canvas.width) this.stopShot();
+        else if(this.x <= this.width) this.stopShot();
+        else if(this.y >= this.canvas.width) this.stopShot();
+        else if(this.y <= 0) this.stopShot();
+
+    
 
     bottom(){
         return this.y + this.height;
@@ -130,7 +129,6 @@ class Shooting{
     right(){
         return this.x + this.width;
     }
-
 
     stopShot(){
 
