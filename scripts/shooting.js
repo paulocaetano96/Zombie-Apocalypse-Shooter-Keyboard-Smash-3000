@@ -24,7 +24,7 @@ class Shooting{
 
         this.x = this.player.x;
         this.y = this.player.y;
-        this.intervalId = setInterval(this.update, 1000 / 60, lastKey)
+        this.intervalId = setInterval(this.update, 10, lastKey)
         this.shotFired = true;
         
     }
