@@ -36,10 +36,12 @@ class Game {
         for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
             this.enemies[i].newPos();
             let dead = this.enemies[i].gotShot();
-            if(dead) this.enemies.splice(i, 1) 
+            if(dead) this.enemies.splice(i, 1)
+        
         }
 
-       this.shot.shotEnd();
+    
+        this.shot.shotEnd();
         /* this.shot.draw();
         */
         
@@ -50,6 +52,7 @@ class Game {
 
         alert('Game Over')
         clearInterval(this.intervalId);
+        
 
     }
 
@@ -65,27 +68,25 @@ class Game {
             this.enemies[i].draw();
             let enemyDead = this.enemies[i].gotShot(this.shot);
             if(enemyDead) this.enemies.splice(i, 1)
-
-            //if(enemyDead) this.enemies.splice(i, 1)
             
         }
+
+            let randomX = Math.floor(Math.random() * this.canvas.width); 
+            let randomY = Math.floor(Math.random() * this.canvas.height) ; 
+            let randomArray = [{x : 0, y : randomY}, {x :this.canvas.width, y: randomY},{x: randomX,y:0},{x:randomX, y:this.canvas.height}];  
+            let randomIndex = Math.floor(Math.random() * randomArray.length);
 
         if(this.frames % 240 === 0){                                
                   
-            
-            let randomX = Math.floor(Math.random() * this.canvas.width); 
-            let randomY = Math.floor(Math.random() * this.canvas.height) ; 
-            let randomArray = [{x : 0, y : randomY}, {x :this.canvas.width, y: randomY},
-                {x: randomX,y:0},{x:randomX, y:this.canvas.height}];  
-            let randomIndex = Math.floor(Math.random() * randomArray.length);
-           
-
             this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png',this.shot));
-
-            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 100, 100, 200, this.ctx, '../docs/assets/images/', this.shot));
         }
 
-            
+         if (this.frames % 750 === 0) {
+
+            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 100, 100, 200, this.ctx, '../docs/assets/images/bossImage.png', this.shot));
+         }
+
+               
 
     }
 
