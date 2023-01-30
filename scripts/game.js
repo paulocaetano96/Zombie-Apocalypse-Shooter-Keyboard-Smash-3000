@@ -39,9 +39,7 @@ class Game {
             if(dead) this.enemies.splice(i, 1) 
         }
 
-        this.enemies.forEach((enemy) => {
-            this.shot.shotEnd(enemy);
-        })
+       this.shot.shotEnd();
         /* this.shot.draw();
         */
         
@@ -66,7 +64,7 @@ class Game {
         for(let i = 0; i < this.enemies.length; i++){
             this.enemies[i].draw();
             let enemyDead = this.enemies[i].gotShot(this.shot);
-            //if(enemyDead) this.enemies.splice(i, 1)
+            if(enemyDead) this.enemies.splice(i, 1)
 
         }
 

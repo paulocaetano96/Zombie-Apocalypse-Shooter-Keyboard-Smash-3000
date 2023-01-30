@@ -24,7 +24,7 @@ class Shooting{
 
         this.x = this.player.x;
         this.y = this.player.y;
-        this.intervalId = setInterval(this.update, 5, lastKey)
+        this.intervalId = setInterval(this.update, 1000 / 60, lastKey)
         this.shotFired = true;
         
     }
@@ -113,10 +113,12 @@ class Shooting{
 
     shotEnd(enemy){
 
-        if(this.x >= this.canvas.width) this.stopShot();
-        else if(this.x <= this.width) this.stopShot();
-        else if(this.y >= this.canvas.width) this.stopShot();
-        else if(this.y <= this.height) this.stopShot();
+        if(this.x >= this.canvas.width || this.x <= this.width || this.y >= this.canvas.width || this.y <= this.height) {
+            this.stopShot();
+        }
+        //else if(this.x <= this.width) this.stopShot();
+        //else if(this.y >= this.canvas.width) this.stopShot();
+        //else if(this.y <= this.height) this.stopShot();
         //else if (!(this.bottom() < enemy.top() || this.top() > enemy.bottom() || 
         //this.right < enemy.left() || this.left > enemy.right())) this.stopShot();
 
