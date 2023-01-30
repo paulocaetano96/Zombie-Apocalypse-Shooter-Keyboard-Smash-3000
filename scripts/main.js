@@ -29,6 +29,9 @@ document.getElementById('start-game-button').onclick = () => {
     /* also, i made here the display of the canvas style to be flex because i wanted it to appear once we click the button. I had to put the display originally as  none on the CSS file so that it would only show up after we click it */
     canvas.style.display = 'flex';
     /* and of course, margin 0 auto because, like you said, 0 auto will be our best friend. just came to mind that i'm writing this shite in english and we're both portuguese but i've written enough so that i don't want to go back and re-do this fucking shite notes back in our GLORIOUS mothertongue. DEUS VULT */
-    canvas.style.margin = '0 auto';   
-}
+    canvas.style.margin = '0 auto';
+
+    document.getElementById("myAudio").play()
+
+};
 

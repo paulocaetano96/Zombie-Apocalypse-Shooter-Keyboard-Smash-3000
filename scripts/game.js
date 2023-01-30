@@ -75,7 +75,13 @@ class Game {
     }
 
     checkGameOver(){
+        const crashed = this.enemies.some((enemy) => {
+            return this.player.crashWith(enemy);
+    });
 
+    if (crashed) {
+        this.stop();
+        }
     }
 }
 
