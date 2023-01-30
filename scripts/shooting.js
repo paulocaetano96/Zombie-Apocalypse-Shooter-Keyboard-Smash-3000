@@ -15,6 +15,8 @@ class Shooting{
     this.intervalId = null;
     this.firstX = 0;
     this.firstY = 0;
+    this.shotFired = false;
+    this.lastKey = lastKey;
 
 }
 
@@ -114,9 +116,16 @@ class Shooting{
         if(this.x >= this.canvas.width) this.stopShot();
         else if(this.x <= this.width) this.stopShot();
         else if(this.y >= this.canvas.width) this.stopShot();
-        else if(this.y <= 0) this.stopShot();
+        else if(this.y <= this.height) this.stopShot();
+        //else if (!(this.bottom() < enemy.top() || this.top() > enemy.bottom() || 
+        //this.right < enemy.left() || this.left > enemy.right())) this.stopShot();
 
-    
+      
+    }
+
+    top(){
+        return this.y;
+    }
 
     bottom(){
         return this.y + this.height;
@@ -129,6 +138,7 @@ class Shooting{
     right(){
         return this.x + this.width;
     }
+
 
     stopShot(){
 

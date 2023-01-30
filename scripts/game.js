@@ -35,6 +35,8 @@ class Game {
         this.updateEnemies();                         
         for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
             this.enemies[i].newPos();
+            let dead = this.enemies[i].gotShot();
+            if(dead) this.enemies.splice(i, 1) 
         }
 
         this.enemies.forEach((enemy) => {
@@ -94,4 +96,3 @@ class Game {
 
    
 }
-
