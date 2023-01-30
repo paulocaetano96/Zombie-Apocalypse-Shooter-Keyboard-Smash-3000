@@ -10,8 +10,8 @@ class Player {
         this.width = width;
         this.height = height;
         this.hp = hp;
-        this.speedX = 5;
-        this.speedY = 5;
+        this.speedX = 0;
+        this.speedY = 0;
         this.ctx = ctx;
         this.img = img;
         this.name = name;
@@ -34,13 +34,15 @@ class Player {
     newPos(){
 
 
-        if(this.x <= 0)this.x = 1;
+        /* if(this.x <= 0)this.x = 1;
         if(this.x >= this.canvas.width - this.width) this.x = canvas.width - this.width;
         if(this.y <= 0)this.y = 1;
-        if(this.y >= this.canvas.height - this.height)this.y = canvas.height - this.height;
-        /* this.x += this.speedX;
+        if(this.y >= this.canvas.height - this.height)this.y = canvas.height - this.height; */
+
+        this.x += this.speedX;
         this.y += this.speedY;
-         */
+        
+         
       
 
 

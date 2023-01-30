@@ -34,8 +34,7 @@ class Shooting{
     update = (lastKey) => {
 
         this.draw(lastKey);
-        //console.log('updatings')
-      
+        
         
     }
 
@@ -46,7 +45,7 @@ class Shooting{
         const bullet = new Image();
         bullet.src = this.img;
         
-
+if(this.shotFired) {
         switch(lastKey) {
 
             case 'ArrowUp':
@@ -97,7 +96,7 @@ class Shooting{
                 this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
                 break; 
                 
-                
+        }
 
         }
         
