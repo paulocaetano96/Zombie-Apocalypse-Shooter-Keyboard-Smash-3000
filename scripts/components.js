@@ -3,7 +3,7 @@
 //Player class
 //Used for the player character
 class Player {
-    constructor(x, y, width, height, hp, speedX, speedY, ctx, img, name){
+    constructor(x, y, width, height, hp, speedX, speedY, ctx, img, name, canvas){
 
         this.x = x;
         this.y = y;
@@ -15,6 +15,7 @@ class Player {
         this.ctx = ctx;
         this.img = img;
         this.name = name;
+        this.canvas = canvas;
  
 
         
@@ -32,6 +33,10 @@ class Player {
     newPos(){
 
 
+        if(this.x <= 0)this.x = 1;
+        if(this.x >= this.canvas.width - this.width) this.x = canvas.width - this.width;
+        if(this.y <= 0)this.y = 1;
+        if(this.y >= this.canvas.height - this.height)this.y = canvas.height - this.height;
         /* this.x += this.speedX;
         this.y += this.speedY;
          */

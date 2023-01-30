@@ -13,6 +13,7 @@ class Game {
         this.highScores = [];
         this.playerSpeed = playerSpeed;
         this.enemySpeed = enemySpeed;
+       
 
     }
 
@@ -33,7 +34,8 @@ class Game {
         for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
             this.enemies[i].newPos();
         }
-       
+        /* this.shot.draw();
+        */
         
 
     }
