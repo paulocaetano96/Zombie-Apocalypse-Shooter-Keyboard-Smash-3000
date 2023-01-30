@@ -1,7 +1,7 @@
 /** @type {HTMLCanvasElement} */
 
 class Game {
-    constructor(ctx, player, boss, canvas, playerSpeed, enemySpeed){
+    constructor(ctx, player, boss, canvas, playerSpeed, enemySpeed, shot){
 
         this.ctx = ctx;
         this.player = player;
@@ -13,6 +13,7 @@ class Game {
         this.highScores = [];
         this.playerSpeed = playerSpeed;
         this.enemySpeed = enemySpeed;
+        this.shot = shot;
        
 
     }
@@ -69,7 +70,7 @@ class Game {
             let randomIndex = Math.floor(Math.random() * randomArray.length);
            
 
-            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png'));
+            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png', this.shot));
         }
     }
 

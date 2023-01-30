@@ -65,8 +65,10 @@ class Player {
         return this.x + this.w;
     }
 
-    crashWith(){
-
+    crashWith(enemy){
+        return!  (
+            this.bottom() < enemy.top() ||
+            );
     }
 }
 
@@ -74,7 +76,7 @@ class Player {
 //Used for the normal enemies
 class Enemy {
 
-    constructor(x, y, width, height, hp, ctx, img){
+    constructor(x, y, width, height, hp, ctx, img, shot){
 
         this.x = x;
         this.y = y;
@@ -83,6 +85,7 @@ class Enemy {
         this.hp = hp;
         this.ctx = ctx;
         this.img = img;
+        this.shot = shot;
 
     }
 
@@ -124,7 +127,7 @@ class Enemy {
         return this.x + this.w;
     }
 
-    gotShot(){
+    gotShot(this.shot){
 
     }
 
