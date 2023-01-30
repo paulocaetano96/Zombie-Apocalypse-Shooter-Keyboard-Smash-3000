@@ -3,7 +3,7 @@
 //Player class
 //Used for the player character
 class Player {
-    constructor(x, y, width, height, hp, speedX, speedY, ctx, img, name, canvas){
+    constructor(x, y, width, height, hp, speedX, speedY, ctx, img, name, canvas, enemy){
 
         this.x = x;
         this.y = y;
@@ -16,6 +16,7 @@ class Player {
         this.img = img;
         this.name = name;
         this.canvas = canvas;
+        this.enemy = enemy;
  
 
         
@@ -65,7 +66,12 @@ class Player {
         return this.x + this.w;
     }
 
-    crashWith(){
+    crashWith(enemy){
+
+        return !(
+            this.bottom() < enemy.top() && this.top() > enemy.bottom() &&
+            this.right() < enemy.left() && this.left() > enemy.right()
+        ); 
 
     }
 }
@@ -74,7 +80,7 @@ class Player {
 //Used for the normal enemies
 class Enemy {
 
-    constructor(x, y, width, height, hp, ctx, img){
+    constructor(x, y, width, height, hp, ctx, img, shot){
 
         this.x = x;
         this.y = y;
@@ -83,6 +89,7 @@ class Enemy {
         this.hp = hp;
         this.ctx = ctx;
         this.img = img;
+        this.shot = shot;
 
     }
 
@@ -125,6 +132,15 @@ class Enemy {
     }
 
     gotShot(){
+
+    /*     
+        return !(this.bottom() < this.shot.top() || this.top() > this.shot.bottom() || 
+        this.right < this.shot.left() || this.left > this.shot.right()) 
+ */
+       
+
+           
+        
 
     }
 

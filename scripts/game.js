@@ -1,7 +1,7 @@
 /** @type {HTMLCanvasElement} */
 
 class Game {
-    constructor(ctx, player, boss, canvas, playerSpeed, enemySpeed){
+    constructor(ctx, player, boss, canvas, playerSpeed, enemySpeed, shot){
 
         this.ctx = ctx;
         this.player = player;
@@ -13,6 +13,7 @@ class Game {
         this.highScores = [];
         this.playerSpeed = playerSpeed;
         this.enemySpeed = enemySpeed;
+        this.shot = shot;
        
 
     }
@@ -27,12 +28,15 @@ class Game {
 
         //Function responsbile for updating the game
         this.frames++;                                 //frames passed, used for time and score
-        this.clear();                                
+        this.clear();         
+        this.checkGameOver();                       
         this.player.newPos();
         this.player.draw();
         this.updateEnemies();                         
         for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
             this.enemies[i].newPos();
+            /* let dead = this.enemies[i].gotShot();
+            if(dead) this.enemies.splice(i, 1) */
         }
         /* this.shot.draw();
         */
@@ -42,6 +46,7 @@ class Game {
 
     stop(){
 
+        alert('Game Over')
         clearInterval(this.intervalId);
 
     }
@@ -69,13 +74,21 @@ class Game {
             let randomIndex = Math.floor(Math.random() * randomArray.length);
            
 
-            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png'));
+            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png', this.shot));
         }
     }
 
     checkGameOver(){
-
+        const crashed = this.enemies.some((enemy) =>{    //.some vai verificar o array dos enemies, correr a função crashWith com todos os enemies
+            return this.player.crashWith(enemy);
+        });
+        if(crashed){
+            this.stop();
+            
+        } 
     }
+
+   
 }
 
 

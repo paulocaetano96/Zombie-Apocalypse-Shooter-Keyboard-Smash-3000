@@ -5,15 +5,17 @@ class Shooting{
 
     this.x = x;
     this.y = y;
-    this.height = 10;
-    this.width = 10;
+    this.height = 20;
+    this.width = 40;
     this.player = player;
     this.canvas = canvas;
+    this.ctx = ctx;
     this.img = img;
     this.speed = speed;
     this.intervalId = null;
     this.firstX = 0;
     this.firstY = 0;
+    this.shotFired = false;
 
 }
 
@@ -22,6 +24,7 @@ class Shooting{
         this.x = this.player.x;
         this.y = this.player.y;
         this.intervalId = setInterval(this.update, 5, lastKey)
+        this.shotFired = true;
         
     }
 
@@ -30,11 +33,12 @@ class Shooting{
     update = (lastKey) => {
 
         this.draw(lastKey);
+        console.log('updatings')
       
         
     }
 
-    draw = (lastKey) => {
+    draw(lastKey) {
 
         
 
@@ -46,49 +50,50 @@ class Shooting{
 
             case 'ArrowUp':
                this.y -= 8;
-               //ctx.drawImage(bullet, this.x, this.y, 50, 40)
+               this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
+            
 
-            ctx.fillRect(this.x, this.y, 100, 100);
+            
             break;
 
             case 'ArrowDown':
                 this.y += 8;
-                this.ctx.drawImage(bullet, this.x, this.y, 50, 40)
+                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
                 break;
 
             case 'ArrowRight':
                 this.x += 8;
-                this.ctx.drawImage(bullet, this.x, this.y, 50, 40)
+                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
                 break;
                     
             case 'ArrowLeft':
                 this.x -= 8;
-                this.ctx.drawImage(bullet, this.x, this.y, 50, 40)
+                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
                 break; 
                 
             case 'ArrowUpLeft':
                  this.x -= 8
                  this.y -= 8;
 
-                 this.ctx.drawImage(bullet, this.x, this.y, 50, 40)
+                 this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
             break;
 
             case 'ArrowUpRight':
                 this.x += 8;
                 this.y -= 8;
-                this.ctx.drawImage(bullet, this.x, this.y, 50, 40)
+                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
                 break;
 
             case 'ArrowDownLeft':
                 this.x -= 8;
                 this.y += 8;
-                this.ctx.drawImage(bullet, this.x, this.y, 50, 40)
+                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
                 break;
                     
             case 'ArrowDownRight':
                 this.x += 8;
                 this.y += 8;
-                this.ctx.drawImage(bullet, this.x, this.y, 50, 40)
+                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
                 break; 
                 
                 
@@ -101,6 +106,8 @@ class Shooting{
         else if(this.x <= 0) this.stopShot();
         else if(this.y >= this.canvas.width) this.stopShot();
         else if(this.y <= 0) this.stopShot();
+        //else if (!(this.top() >= this.shot.bottom() || this.bottom() <= this.shot.top() || 
+        //this.right >= this.shot.left() || this.left <= this.shot.right())) this.stopShot();
 
     
 
@@ -108,9 +115,28 @@ class Shooting{
 
     }
 
+    top(){
+        return this.y;
+    }
+
+    bottom(){
+        return this.y + this.height;
+    }
+
+    left(){
+        return this.x;
+    }
+
+    right(){
+        return this.x + this.width;
+    }
+
+
     stopShot(){
 
         clearInterval(this.intervalId);
+        this.shotFired = false;
+       
         
     }
 
