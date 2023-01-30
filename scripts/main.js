@@ -32,3 +32,7 @@ document.getElementById('start-game-button').onclick = () => {
     canvas.style.margin = '0 auto'; 
     //document.getElementById('myAudio').play();  
 }
+
+document.getElementById("exit-button").onclick = () => {
+    window.close();
+}

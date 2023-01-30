@@ -67,7 +67,7 @@ class Game {
             this.enemies[i].draw();
             let enemyDead = this.enemies[i].gotShot(this.shot);
             //if(enemyDead) this.enemies.splice(i, 1)
-
+            
         }
 
         if(this.frames % 240 === 0){                                
@@ -81,7 +81,12 @@ class Game {
            
 
             this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png',this.shot));
+
+            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 100, 100, 200, this.ctx, '../docs/assets/images/', this.shot));
         }
+
+            
+
     }
 
     checkGameOver(){
