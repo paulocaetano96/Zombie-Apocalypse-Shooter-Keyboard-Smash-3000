@@ -1,7 +1,7 @@
 /** @type {HTMLCanvasElement} */
 
 class Game {
-    constructor(ctx, player, boss, canvas, playerSpeed, enemySpeed, shot){
+    constructor(ctx, player, canvas, playerSpeed, enemySpeed, shot){
 
         this.ctx = ctx;
         this.player = player;
@@ -9,7 +9,7 @@ class Game {
         this.intervalId = null;
         this.frames = 0;
         this.enemies = [];
-        this.boss = boss;
+        //this.boss = boss;
         this.highScores = [];
         this.playerSpeed = playerSpeed;
         this.enemySpeed = enemySpeed;
@@ -32,27 +32,19 @@ class Game {
         this.checkGameOver();                       
         this.player.newPos();
         this.player.draw();
-        this.updateEnemies();                         
-        for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
-            this.enemies[i].newPos();
-            let dead = this.enemies[i].gotShot();
-            if(dead) this.enemies.splice(i, 1)
-        
-        }
+        this.updateEnemies();   
 
-    
+        for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
+            this.enemies[i].newPos();         
+            } 
+              
         this.shot.shotEnd();
-        /* this.shot.draw();
-        */
-        
 
     }
 
     stop(){
-
-        alert('Game Over')
-        clearInterval(this.intervalId);
-        
+     
+        clearInterval(this.intervalId);     
 
     }
 
@@ -62,12 +54,19 @@ class Game {
 
     }
     
-    updateEnemies(){
+    updateEnemies = () =>{
 
         for(let i = 0; i < this.enemies.length; i++){
             this.enemies[i].draw();
-            let enemyDead = this.enemies[i].gotShot(this.shot);
-            if(enemyDead) this.enemies.splice(i, 1)
+            if(this.enemies[i].gotShot()) this.enemies[i].receiveDamage();
+            if(this.enemies[i].enemyType == 'Boss' && this.enemies[i].hp <= 0){
+                alert('CA GANDA PATRÃO')
+                this.stop()
+                
+            }else if(this.enemies[i].enemyType == 'Enemy' && this.enemies[i].hp <= 0){
+                this.enemies.splice(i, 1)
+            }
+            
             
         }
 
@@ -78,12 +77,12 @@ class Game {
 
         if(this.frames % 240 === 0){                                
                   
-            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png',this.shot));
+            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png',this.shot, 'Enemy'));
         }
 
-         if (this.frames % 750 === 0) {
+         if (this.frames % 730 === 0) {
 
-            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 100, 100, 200, this.ctx, '../docs/assets/images/bossImage.png', this.shot));
+            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 100, 100, 200, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
          }
 
                
@@ -95,6 +94,7 @@ class Game {
             return this.player.crashWith(enemy);
         });
         if(crashed){
+            alert('AI CA BURRO!!!!');
             this.stop();
             
         } 

@@ -6,7 +6,7 @@ class Shooting{
     this.x = x;
     this.y = y;
     this.height = 20;
-    this.width = 40;
+    this.width = 20;
     this.player = player;
     this.canvas = canvas;
     this.ctx = ctx;
@@ -34,7 +34,7 @@ class Shooting{
     update = (lastKey) => {
 
         this.draw(lastKey);
-        console.log('updatings')
+        //console.log('updatings')
       
         
     }

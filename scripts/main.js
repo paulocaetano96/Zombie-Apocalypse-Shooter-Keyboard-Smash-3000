@@ -9,9 +9,9 @@ let playerImg = '../docs/assets/images/chieficon.png'
 let bulletImg = '../docs/assets/images/pickle_rick_bullet.png';
 
 const player = new Player(canvas.width / 2, canvas.height / 2, 70, 50, 100, 5, 5, ctx, playerImg, 'Ramiro', canvas)
-const boss = new Boss(2, 10, 20, 20, 50, ctx, playerImg)
 const shot = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKey)
-const newGame = new Game(ctx, player, boss, canvas, 5, 5, shot);
+//const boss = new Boss(120, 120, 100, 100, 200, ctx, '../docs/assets/images/bossImage.png', shot, 'Boss')
+const newGame = new Game(ctx, player, canvas, 5, 5, shot);
 
 
 document.getElementById('start-game-button').onclick = () => {  

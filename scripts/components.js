@@ -79,7 +79,7 @@ class Player {
 //Used for the normal enemies
 class Enemy {
 
-    constructor(x, y, width, height, hp, ctx, img, shot){
+    constructor(x, y, width, height, hp, ctx, img, shot, enemyType){
 
         this.x = x;
         this.y = y;
@@ -89,6 +89,7 @@ class Enemy {
         this.ctx = ctx;
         this.img = img;
         this.shot = shot;
+        this.enemyType = enemyType;
         
 
     }
@@ -137,12 +138,14 @@ class Enemy {
        this.right() < this.shot.left() || this.left() > this.shot.right())  
        
        
-
-           
-        
-
     }
 
+    receiveDamage(){
+
+        this.hp -= 10;
+        console.log(this.hp)
+       
+    }
 
 }
 
