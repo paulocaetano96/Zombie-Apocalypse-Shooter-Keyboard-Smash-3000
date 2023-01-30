@@ -16,6 +16,7 @@ class Player {
         this.img = img;
         this.name = name;
         this.canvas = canvas;
+        
  
 
         
@@ -54,7 +55,7 @@ class Player {
     }
 
     bottom(){
-        return this.y + this.h;
+        return this.y + this.height;
     }
 
     left(){
@@ -62,16 +63,15 @@ class Player {
     }
 
     right(){
-        return this.x + this.w;
+        return this.x + this.width;
     }
 
     crashWith(enemy){
-        return!  (
-            this.bottom() < enemy.top() ||
-            this.top() > enemy.bottom() ||
-            this.right() < enemy.left() ||
-            this.left() > enemy.right()
-            );
+
+        return !(
+            this.bottom() < enemy.top() || this.top() > enemy.bottom() ||
+            this.right() < enemy.left() || this.left() > enemy.right()
+        );
     }
 }
 
@@ -89,6 +89,7 @@ class Enemy {
         this.ctx = ctx;
         this.img = img;
         this.shot = shot;
+        
 
     }
 
@@ -119,7 +120,7 @@ class Enemy {
     }
 
     bottom(){
-        return this.y + this.h;
+        return this.y + this.height;
     }
 
     left(){
@@ -127,12 +128,21 @@ class Enemy {
     }
 
     right(){
-        return this.x + this.w;
+        return this.x + this.width;
     }
 
-    /* gotShot(this.shot){
+    gotShot = () =>{
 
-    } */
+         
+       return !(this.bottom() < this.shot.top() || this.top() > this.shot.bottom() || 
+       this.right() < this.shot.left() || this.left() > this.shot.right())  
+       
+       
+
+           
+        
+
+    }
 
 
 }

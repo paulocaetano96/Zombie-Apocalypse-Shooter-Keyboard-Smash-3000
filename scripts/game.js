@@ -28,13 +28,20 @@ class Game {
 
         //Function responsbile for updating the game
         this.frames++;                                 //frames passed, used for time and score
-        this.clear();                                
+        this.clear();         
+        this.checkGameOver();                       
         this.player.newPos();
         this.player.draw();
         this.updateEnemies();                         
         for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
             this.enemies[i].newPos();
+            let dead = this.enemies[i].gotShot();
+            if(dead) this.enemies.splice(i, 1) 
         }
+
+        this.enemies.forEach((enemy) => {
+            this.shot.shotEnd(enemy);
+        })
         /* this.shot.draw();
         */
         
@@ -43,6 +50,7 @@ class Game {
 
     stop(){
 
+        alert('Game Over')
         clearInterval(this.intervalId);
 
     }
@@ -57,6 +65,8 @@ class Game {
 
         for(let i = 0; i < this.enemies.length; i++){
             this.enemies[i].draw();
+            let enemyDead = this.enemies[i].gotShot(this.shot);
+            //if(enemyDead) this.enemies.splice(i, 1)
 
         }
 
@@ -70,20 +80,20 @@ class Game {
             let randomIndex = Math.floor(Math.random() * randomArray.length);
            
 
-            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png', this.shot));
+            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png',this.shot));
         }
     }
 
     checkGameOver(){
-        const crashed = this.enemies.some((enemy) => {
+        const crashed = this.enemies.some((enemy) =>{    //.some vai verificar o array dos enemies, correr a função crashWith com todos os enemies
             return this.player.crashWith(enemy);
-    });
-
-    if (crashed) {
-        this.stop();
-        }
+        });
+        if(crashed){
+            this.stop();
+            
+        } 
     }
+
+   
 }
-
-
 
