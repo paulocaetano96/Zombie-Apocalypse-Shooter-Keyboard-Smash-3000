@@ -98,8 +98,7 @@ class Enemy {
         const enemyImg = new Image();
         enemyImg.src = this.img;
         this.ctx.drawImage(enemyImg, this.x, this.y, this.width, this.height)
-        
-        
+
 
     }
 
@@ -156,6 +155,6 @@ class Boss extends Enemy {
     specialAttack(){
 
     }
-
-
+    
+    
 }
