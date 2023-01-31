@@ -139,4 +139,8 @@ class Reload {
         this.maxShots = maxShots;
 
     }
+
+    fireShot
+
+
 }

@@ -66,6 +66,7 @@ document.addEventListener('keydown', (e) => {
              shot.y = player.y;
              shot.stopShot();
              shot.firstShot(lastKeyPressed);
+             
              break;
         }
                 
