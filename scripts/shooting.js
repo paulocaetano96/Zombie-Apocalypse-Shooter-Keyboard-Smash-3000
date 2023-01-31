@@ -1,7 +1,7 @@
 /** @type {HTMLCanvasElement} */
 
 class Shooting{
-    constructor(x, y, player, canvas, img, speed, ctx, lastKey){
+    constructor(x, y, player, canvas, img, speed, ctx, lastKey, index){
 
     this.x = x;
     this.y = y;
@@ -19,35 +19,39 @@ class Shooting{
     this.lastKey = lastKey;
     this.bullet = new Image();
     this.bullet.src = this.img;
+    this.countBullets = 0;
+    this.index = index;
 
 }
 
-    firstShot(lastKey){
+    firstShot(){
 
         this.x = this.player.x;
         this.y = this.player.y;
-        this.intervalId = setInterval(this.update, 10, lastKey)
+        //this.intervalId = setInterval(this.update, 10, lastKey)
         this.shotFired = true;
+        console.log(this.index)
+        
         
     }
 
   
 
-    update = (lastKey) => {
+    update = () => {
 
-        this.draw(lastKey);
+        this.draw();
         
         
     }
 
-    draw(lastKey) {
+    draw() {
 
                
-        if(this.shotFired) {
+       if(this.shotFired) {
 
              this.ctx.drawImage(this.bullet, this.x, this.y, this.width, this.height) 
 
-            switch(lastKey) {
+            switch(this.lastKey) {
 
                  case 'ArrowUp':
                      this.y -= 8;
@@ -95,13 +99,23 @@ class Shooting{
 
     shotEnd(){
 
-        if(this.x >= this.canvas.width || this.x <= this.width || this.y >= this.canvas.width || this.y <= this.height) {
+        if(this.x >= this.canvas.width || this.x <= 0 || this.y >= this.canvas.width || this.y <= 0) {
             this.shotFired = false;
-            this.stopShot();
+            //this.stopShot();
         }
        
+        
 
       
+    }
+
+    crashWith(enemy){
+
+        if(this.shotFired){
+        return !(
+            this.bottom() < enemy.top() || this.top() > enemy.bottom() ||
+            this.right() < enemy.left() || this.left() > enemy.right()
+        );}
     }
 
     top(){
@@ -133,15 +147,39 @@ class Shooting{
 }
 
 class Reload {
-    constructor(reloadTime, maxShots) {
+    constructor(magazine, reloadTime, maxShots) {
 
-        this.shot = [];
+        this.magazine = magazine
         this.reloadTime = reloadTime;
         this.maxShots = maxShots;
+        this.countShots = 0;
+        this.reload = false;
 
     }
 
-    fireShot
+    fireShot(){
+
+        if(this.countShots >= this.magazine.length - 1){
+            this.countShots = 0;
+            this.reload = true;
+            setTimeout(() => {this.reload = false}, 2000)
+        } 
+
+        if(!this.reload){
+            this.magazine[this.countShots].firstShot();
+            console.log(this.magazine[this.countShots])
+            this.countShots ++;
+        
+
+        } 
+    }
+
+
+    reload(){
+
+        
+
+    }
 
 
 }

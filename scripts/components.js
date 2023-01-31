@@ -157,9 +157,12 @@ class Enemy {
     receiveDamage(){
 
         
-        if(this.shot.shotFired)this.hp -= 5;
+        /* if(this.shot.shotFired)this.hp -= 5;
         this.shot.shotFired = false;
+        console.log(this.hp) */
+        this.hp -= 5;
         console.log(this.hp)
+        //console.log(this.hp)
         
         
        

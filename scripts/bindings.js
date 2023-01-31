@@ -64,8 +64,14 @@ document.addEventListener('keydown', (e) => {
         case 'Space':
              shot.x = player.x;
              shot.y = player.y;
-             shot.stopShot();
-             shot.firstShot(lastKeyPressed);
+             //shot.stopShot();
+             shot.lastKey = lastKeyPressed;
+             shot2.lastKey = lastKeyPressed;
+             shot3.lastKey = lastKeyPressed;
+             shot4.lastKey = lastKeyPressed;
+             shot5.lastKey = lastKeyPressed;
+             shot6.lastKey = lastKeyPressed;
+             reload.fireShot();
              
              break;
         }
