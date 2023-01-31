@@ -31,6 +31,7 @@ class Game {
         this.checkGameOver();                       
         this.player.newPos();
         this.player.draw();
+        this.player.healthBar();
         this.updateEnemies();   
 
         for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
@@ -92,6 +93,7 @@ class Game {
                
 
     }
+
 
     checkGameOver(){
         const crashed = this.enemies.some((enemy) =>{    //.some vai verificar o array dos enemies, correr a função crashWith com todos os enemies
