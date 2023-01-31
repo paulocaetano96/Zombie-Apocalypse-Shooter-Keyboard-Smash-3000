@@ -42,61 +42,48 @@ class Shooting{
 
     draw(lastKey) {
 
-        
+               
+        if(this.shotFired) {
 
-        
-        
-if(this.shotFired) {
+             this.ctx.drawImage(this.bullet, this.x, this.y, this.width, this.height) 
 
-        this.ctx.drawImage(this.bullet, this.x, this.y, this.width, this.height) 
+            switch(lastKey) {
 
-        switch(lastKey) {
+                 case 'ArrowUp':
+                     this.y -= 8;
+                     break;
 
-            
-            case 'ArrowUp':
-               this.y -= 8;
-               /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */  
-            break;
+                 case 'ArrowDown':
+                     this.y += 8;
+                     break;
 
-            case 'ArrowDown':
-                this.y += 8;
-                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
-                break;
-
-            case 'ArrowRight':
-                this.x += 8;
-                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
-                break;
+                case 'ArrowRight':
+                     this.x += 8;
+                     break;
                     
-            case 'ArrowLeft':
-                this.x -= 8;
-                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
-                break; 
+                case 'ArrowLeft':
+                    this.x -= 8;
+                    break; 
                 
-            case 'ArrowUpLeft':
-                 this.x -= 8
-                 this.y -= 8;
+                case 'ArrowUpLeft':
+                    this.x -= 8
+                    this.y -= 8;
+                    break;
 
-                 /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
-            break;
+                case 'ArrowUpRight':
+                    this.x += 8;
+                    this.y -= 8;
+                    break;
 
-            case 'ArrowUpRight':
-                this.x += 8;
-                this.y -= 8;
-                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
-                break;
-
-            case 'ArrowDownLeft':
-                this.x -= 8;
-                this.y += 8;
-                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
-                break;
+                case 'ArrowDownLeft':
+                    this.x -= 8;
+                    this.y += 8;
+                    break;
                     
-            case 'ArrowDownRight':
-                this.x += 8;
-                this.y += 8;
-                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
-                break; 
+                case 'ArrowDownRight':
+                    this.x += 8;
+                    this.y += 8;
+                    break; 
                 
         }
 
@@ -142,4 +129,14 @@ if(this.shotFired) {
         
     }
 
+}
+
+class Reload {
+    constructor(reloadTime, maxShots) {
+
+        this.shot = [];
+        this.reloadTime = reloadTime;
+        this.maxShots = maxShots;
+
+    }
 }

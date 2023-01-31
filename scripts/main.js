@@ -34,7 +34,7 @@ document.getElementById('start-game-button').onclick = () => {
    document.getElementById('myAudio').play();
 }
 
-document.getElementById("exit-button").onclick = () => {
+/* document.getElementById("exit-button").onclick = () => {
     window.close();
 }
 
@@ -46,4 +46,4 @@ document.getElementById("home-page-button").onclick = () => {
     console.log("OLAAAAAA")
     window.location.href = "./index.html"
 
-}
+} */

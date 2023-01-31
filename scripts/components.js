@@ -73,8 +73,8 @@ class Player {
         this.ctx.fillStyle = 'Gray'
         this.ctx.fillRect(50, 15, this.initialHp + 20, 50)
         if((this.hp / this.initialHp) * 100 < 25) this.ctx.fillStyle = 'Red';
-        else if((this.hp / this.initialHp) * 100 >= 25) this.ctx.fillStyle = 'Orange';
-        else if((this.hp / this.initialHp) * 100 >= 50) this.ctx.fillStyle = 'Yellow';
+        else if((this.hp / this.initialHp) * 100 > 25 && (this.hp / this.initialHp) * 100 < 50) this.ctx.fillStyle = 'Orange';
+        else if((this.hp / this.initialHp) * 100 >= 50 && (this.hp / this.initialHp) * 100 < 75) this.ctx.fillStyle = 'Yellow';
         else if((this.hp / this.initialHp) * 100 >= 75) this.ctx.fillStyle = 'Green';
         this.ctx.fillRect(60, 25, this.hp, 30)
     }
