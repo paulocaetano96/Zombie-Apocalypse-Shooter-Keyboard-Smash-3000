@@ -124,6 +124,7 @@ class Shooting{
     stopShot(){
 
         clearInterval(this.intervalId);
+        console.log('SHOT STOP')
         //this.shotFired = false;
        
         
