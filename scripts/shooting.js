@@ -147,19 +147,20 @@ class Shooting{
 }
 
 class Reload {
-    constructor(magazine, reloadTime, maxShots) {
+    constructor(magazine, reloadTime, maxShots, ctx) {
 
         this.magazine = magazine
         this.reloadTime = reloadTime;
         this.maxShots = maxShots;
         this.countShots = 0;
         this.reload = false;
+        this.ctx = ctx;
 
     }
 
     fireShot(){
 
-        if(this.countShots >= this.magazine.length - 1){
+        if(this.countShots >= this.magazine.length ){
             this.countShots = 0;
             this.reload = true;
             setTimeout(() => {this.reload = false}, 2000)
@@ -175,7 +176,15 @@ class Reload {
     }
 
 
-    reload(){
+    reloading(){
+
+        this.ctx.font = "bold 48px serif";
+        this.ctx.fillStyle = 'Black';
+        this.ctx.fillText(`${6 - this.countShots }`, 600, 50)
+        if(this.reload){
+            console.log('reloading')
+            this.ctx.fillText('Reloading', 700, 50)
+        }
 
         
 

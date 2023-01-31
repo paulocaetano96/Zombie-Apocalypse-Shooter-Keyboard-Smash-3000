@@ -39,6 +39,7 @@ class Game {
             shot.draw();
             
         })
+        reload.reloading();
         
 
         for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
@@ -161,7 +162,7 @@ class Game {
          for(let i = 0; i < this.enemies.length; i++){
              if (this.magazine[5].crashWith(this.enemies[i])){
                   shotEnemyBullet5 = this.enemies[i];
-                  enemy4Shot = true;
+                  enemy5Shot = true;
                          
                      }
          
@@ -205,7 +206,7 @@ class Game {
             this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, '../docs/assets/images/chieficon.png',this.shot, 'Enemy'));
         }
 
-         if (this.frames % 730 === 0) {             //criação do boss após x tempo
+         if (this.frames % 6000 === 0) {             //criação do boss após x tempo
 
             this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 100, 100, 80, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
          }
