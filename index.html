@@ -42,17 +42,46 @@
             </div>  
          </div>   
                 
+
          <canvas id="canvas" width="1000px" height="500px" style="border: 5px solid white"></canvas>
+
             
         <div class="middlepart-middle-section"> <!-- div for the menu -->
             <ul class="list">
                 <li><button type="button" class="hide-on-click" id="start-game-button" onclick="playSound()">Start Game</button></li>
                 <audio src="/docs/assets/sounds/background-song.mp3" id="myAudio"></audio>
+
                 <li><button type="button" class="hide-on-click" id="highscore-button">Highscore</button></li>
                 <li><button type="button" class="hide-on-click" id="credits-button">Credits</button></li>
                 <li><button type="button" class="hide-on-click" id="exit-button">Exit</button></li>
             </ul>
+            
         </div>
+
+        <div class="form-popup hidden" id="myForm">
+            <form action='' class="form-container">
+                <h2 id="form-title">Special One</h2>
+
+                <label for="text" id="player-label"><b>Player Name</b></label>
+                <input type="text" placeholder="Enter nickname" id="player-name" name="text" required>
+                
+                <h4>Mode</h4>
+                <div>
+                    <label for="mode">easy peasy lemon squeezy</label>
+                    <input type="radio" id="mode" name="mode" value="mode">
+                </div>
+                <div>
+                    <label for="mode">head scratching</label>
+                    <input type="radio" id="mode" name="mode" value="mode">
+                </div>
+                <div>
+                    <label for="mode">Madness</label>
+                    <input type="radio" id="mode" name="mode" value="mode">
+                </div>
+                <button type="button" id="begin-game">Begin!</button>
+            </form>
+         </div>
+
             
         <div id="bonus-story-line-div"> 
             <button type="button" class="hide-on-click " id="bonus-story-line-style-button">
@@ -65,6 +94,7 @@
     </section>
 
     </div>
+    <script src="./scripts/highscore.js"></script> 
     <script src="./scripts/bindings.js"></script>   
     <script src="./scripts/components.js"></script>
     <script src="./scripts/shooting.js"></script>
@@ -72,3 +102,4 @@
     <script src="./scripts/main.js"></script>   
 </body>
 </html>
+
