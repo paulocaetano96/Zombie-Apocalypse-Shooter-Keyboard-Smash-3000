@@ -38,9 +38,11 @@ document.getElementById("exit-button").onclick = () => {
 }
 
 document.getElementById("highscore-button").onclick = () => {
-    location.href = "/highscore.html"
+    location.href = "./highscore.html"
 }
 
 document.getElementById("home-page-button").onclick = () => {
-    location.href = "/index.html"
+    console.log("OLAAAAAA")
+    window.location.href = "./index.html"
+
 }
