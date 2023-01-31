@@ -34,10 +34,10 @@ class Player {
     newPos(){
 
 
-        /* if(this.x <= 0)this.x = 1;
+        if(this.x <= 0)this.x = 1;
         if(this.x >= this.canvas.width - this.width) this.x = canvas.width - this.width;
         if(this.y <= 0)this.y = 1;
-        if(this.y >= this.canvas.height - this.height)this.y = canvas.height - this.height; */
+        if(this.y >= this.canvas.height - this.height)this.y = canvas.height - this.height; 
 
         this.x += this.speedX;
         this.y += this.speedY;
@@ -92,6 +92,7 @@ class Enemy {
         this.img = img;
         this.shot = shot;
         this.enemyType = enemyType;
+       
         
 
     }
@@ -135,7 +136,7 @@ class Enemy {
 
     gotShot = () =>{
 
-         
+       
        return !(this.bottom() < this.shot.top() || this.top() > this.shot.bottom() || 
        this.right() < this.shot.left() || this.left() > this.shot.right())  
        
@@ -144,8 +145,12 @@ class Enemy {
 
     receiveDamage(){
 
-        this.hp -= 10;
+        
+        if(this.shot.shotFired)this.hp -= 5;
+        this.shot.shotFired = false;
         console.log(this.hp)
+        
+        
        
     }
 

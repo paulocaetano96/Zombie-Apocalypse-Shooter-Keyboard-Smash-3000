@@ -17,6 +17,8 @@ class Shooting{
     this.firstY = 0;
     this.shotFired = false;
     this.lastKey = lastKey;
+    this.bullet = new Image();
+    this.bullet.src = this.img;
 
 }
 
@@ -42,84 +44,75 @@ class Shooting{
 
         
 
-        const bullet = new Image();
-        bullet.src = this.img;
+        
         
 if(this.shotFired) {
+
+        this.ctx.drawImage(this.bullet, this.x, this.y, this.width, this.height) 
+
         switch(lastKey) {
 
+            
             case 'ArrowUp':
                this.y -= 8;
-               this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
-            
-
-            
+               /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */  
             break;
 
             case 'ArrowDown':
                 this.y += 8;
-                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
+                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
                 break;
 
             case 'ArrowRight':
                 this.x += 8;
-                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
+                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
                 break;
                     
             case 'ArrowLeft':
                 this.x -= 8;
-                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
+                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
                 break; 
                 
             case 'ArrowUpLeft':
                  this.x -= 8
                  this.y -= 8;
 
-                 this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
+                 /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
             break;
 
             case 'ArrowUpRight':
                 this.x += 8;
                 this.y -= 8;
-                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
+                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
                 break;
 
             case 'ArrowDownLeft':
                 this.x -= 8;
                 this.y += 8;
-                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
+                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
                 break;
                     
             case 'ArrowDownRight':
                 this.x += 8;
                 this.y += 8;
-                this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height)
+                /* this.ctx.drawImage(bullet, this.x, this.y, this.width, this.height) */
                 break; 
                 
         }
 
+
         }
         
-       
-
-        
-
-    
-
-
 
     }
 
-    shotEnd(enemy){
+    shotEnd(){
 
         if(this.x >= this.canvas.width || this.x <= this.width || this.y >= this.canvas.width || this.y <= this.height) {
+            this.shotFired = false;
             this.stopShot();
         }
-        //else if(this.x <= this.width) this.stopShot();
-        //else if(this.y >= this.canvas.width) this.stopShot();
-        //else if(this.y <= this.height) this.stopShot();
-        //else if (!(this.bottom() < enemy.top() || this.top() > enemy.bottom() || 
-        //this.right < enemy.left() || this.left > enemy.right())) this.stopShot();
+       
 
       
     }
@@ -144,7 +137,7 @@ if(this.shotFired) {
     stopShot(){
 
         clearInterval(this.intervalId);
-        this.shotFired = false;
+        //this.shotFired = false;
        
         
     }

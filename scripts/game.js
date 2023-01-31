@@ -9,7 +9,6 @@ class Game {
         this.intervalId = null;
         this.frames = 0;
         this.enemies = [];
-        //this.boss = boss;
         this.highScores = [];
         this.playerSpeed = playerSpeed;
         this.enemySpeed = enemySpeed;
@@ -57,32 +56,37 @@ class Game {
     updateEnemies = () =>{
 
         for(let i = 0; i < this.enemies.length; i++){
-            this.enemies[i].draw();
-            if(this.enemies[i].gotShot()) this.enemies[i].receiveDamage();
-            if(this.enemies[i].enemyType == 'Boss' && this.enemies[i].hp <= 0){
+            this.enemies[i].draw();                                                     //fazer aparecer os enemies
+            if(this.enemies[i].gotShot()){                                              //verificar se foram atingidos
+                this.enemies[i].receiveDamage();                                       //causar dano nos enemies
+            }  
+            if(this.enemies[i].enemyType == 'Boss' && this.enemies[i].hp <= 0){        //caso o Boss morra,acabar o jogo
                 alert('CA GANDA PATRÃO')
                 this.stop()
                 
-            }else if(this.enemies[i].enemyType == 'Enemy' && this.enemies[i].hp <= 0){
+            }else if(this.enemies[i].enemyType == 'Enemy' && this.enemies[i].hp <= 0){  //caso seja um enemy a morrer, retirar do array
                 this.enemies.splice(i, 1)
             }
             
             
         }
 
-            let randomX = Math.floor(Math.random() * this.canvas.width); 
-            let randomY = Math.floor(Math.random() * this.canvas.height) ; 
-            let randomArray = [{x : 0, y : randomY}, {x :this.canvas.width, y: randomY},{x: randomX,y:0},{x:randomX, y:this.canvas.height}];  
-            let randomIndex = Math.floor(Math.random() * randomArray.length);
+        //criação de X e Y random
+        //colocar posições random na border do canvas
+        //decidir aleatoriamente de que border apareça o enemy    
+        let randomX = Math.floor(Math.random() * this.canvas.width); 
+        let randomY = Math.floor(Math.random() * this.canvas.height) ; 
+        let randomArray = [{x : 0, y : randomY}, {x :this.canvas.width, y: randomY},{x: randomX,y:0},{x:randomX, y:this.canvas.height}];  
+        let randomIndex = Math.floor(Math.random() * randomArray.length);
 
-        if(this.frames % 240 === 0){                                
+        if(this.frames % 300 === 0){               //criação de enemies após x tempo                              
                   
-            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 50, this.ctx, '../docs/assets/images/chieficon.png',this.shot, 'Enemy'));
+            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, '../docs/assets/images/chieficon.png',this.shot, 'Enemy'));
         }
 
-         if (this.frames % 730 === 0) {
+         if (this.frames % 730 === 0) {             //criação do boss após x tempo
 
-            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 100, 100, 200, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
+            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 100, 100, 80, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
          }
 
                
@@ -93,11 +97,14 @@ class Game {
         const crashed = this.enemies.some((enemy) =>{    //.some vai verificar o array dos enemies, correr a função crashWith com todos os enemies
             return this.player.crashWith(enemy);
         });
-        if(crashed){
+        if(crashed){                                     //se for detedada colisão player perder vida
+            this.player.hp -= 1;           
+        } 
+
+        if(this.player.hp <= 0) {                        //se a vida for menor ou igual a zero, perde o jogo
             alert('AI CA BURRO!!!!');
             this.stop();
-            
-        } 
+        }
     }
 
    
