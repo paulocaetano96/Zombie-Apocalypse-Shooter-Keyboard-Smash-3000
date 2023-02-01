@@ -116,22 +116,13 @@ class Enemy {
 
     draw(){
 
-
-
- 
         const enemyImg = new Image();
         enemyImg.src = this.img;
         if(this.movLeft)this.dy = 0;
-        else if(this.movRight) this.dy = 56;
-        this.ctx.drawImage(enemyImg, this.dx, this.dy, 40, 56, this.x, this.y, 40, 56);
-        //console.log(this.dx)
+        else if(this.movRight) this.dy = 52;
+        this.ctx.drawImage(enemyImg, this.dx, this.dy, 40, 50, this.x, this.y, 44, 60);
 
-       
-        //this.dx += 65;
-        //if(this.dx >= 260) this.dx = 20;
-     
-        
-
+    
 
     }
 
@@ -205,6 +196,16 @@ class Enemy {
 //Created a new class to be easier to understand when the boss will deploy on the game engine
 
 class Boss extends Enemy {
+
+    draw(){
+
+        const bossImg = new Image();
+        bossImg.src = this.img;
+        this.ctx.drawImage(bossImg, this.x, this.y, this.width, this.height)
+
+    
+
+    }
 
     specialAttack(){
 

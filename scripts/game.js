@@ -16,14 +16,12 @@ class Game {
         this.shot = shot;
         this.magazine = magazine;
        
-
     }
 
     start(){
 
         this.intervalId = setInterval(this.update, 1000 / 60);
         this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 10);
-
     }
 
     update = () => {
@@ -44,16 +42,14 @@ class Game {
             this.enemies[i].newPos();         
             } 
         this.player.healthBar();      
-        
-
     }
 
     updateSprites = () => {
 
        
           for(let i = 0; i < this.enemies.length; i++){
-            if(this.enemies[i].dx >= 335)this.enemies[i].dx = 0;
-            else this.enemies[i].dx += 65;  
+            if(this.enemies[i].dx >= 600)this.enemies[i].dx = 0;
+            else this.enemies[i].dx += 40;  
             console.log(this.enemies[i].dx)                                                  
             } 
             
@@ -79,18 +75,13 @@ class Game {
         for(let i = 0; i < this.enemies.length; i++){
             if (this.magazine[0].crashWith(this.enemies[i])){
                 shotEnemyBullet0 = this.enemies[i];
-                enemy0Shot = true;
-                
+                enemy0Shot = true;   
             }
-
         }
-
         if(enemy0Shot){
              this.magazine[0].shotFired = false;
              shotEnemyBullet0.receiveDamage();
-
         }
-
 
 
         //Bala 2
@@ -102,11 +93,9 @@ class Game {
                 enemy1Shot = true;      
             }
         }
-
             if(enemy1Shot){
              this.magazine[1].shotFired = false;
              shotEnemyBullet1.receiveDamage();
-             console.log('tiro 2 colidiu')
         }
 
 
@@ -116,16 +105,12 @@ class Game {
         for(let i = 0; i < this.enemies.length; i++){
             if (this.magazine[2].crashWith(this.enemies[i])){
                 shotEnemyBullet2 = this.enemies[i];
-                 enemy2Shot = true;
-                        
+                 enemy2Shot = true;           
                     }
-        
                 }
-        
          if(enemy2Shot){
              this.magazine[2].shotFired = false;
              shotEnemyBullet2.receiveDamage();
-             console.log('tiro 3 colidiu')
                 }
         
         //Bala 4
@@ -134,16 +119,12 @@ class Game {
         for(let i = 0; i < this.enemies.length; i++){
             if (this.magazine[3].crashWith(this.enemies[i])){
                 shotEnemyBullet3 = this.enemies[i];
-                 enemy3Shot = true;
-                        
+                 enemy3Shot = true;         
                     }
-        
                 }
-        
          if(enemy3Shot){
              this.magazine[3].shotFired = false;
              shotEnemyBullet3.receiveDamage();
-             console.log('tiro 4 colidiu')
                 }
         
          //Bala 5
@@ -152,19 +133,14 @@ class Game {
          for(let i = 0; i < this.enemies.length; i++){
              if (this.magazine[4].crashWith(this.enemies[i])){
                 shotEnemyBullet4  = this.enemies[i];
-                  enemy4Shot = true;
-                         
+                  enemy4Shot = true;          
                      }
-         
                  }
-         
           if(enemy4Shot){
               this.magazine[4].shotFired = false;
               shotEnemyBullet4 .receiveDamage();
-              console.log('tiro 5 colidiu')
                  }
-               
-        
+                 
          //Bala 6
          let shotEnemyBullet5 = {};
          let enemy5Shot = false;
@@ -174,31 +150,24 @@ class Game {
                   enemy5Shot = true;
                          
                      }
-         
                  }
-         
+
           if(enemy5Shot){
               this.magazine[5].shotFired = false;
               shotEnemyBullet5.receiveDamage();
-              console.log('tiro 6 colidiu')
                  }
                
-
         for(let i = 0; i < this.enemies.length; i++){
             this.enemies[i].draw();                                                     //fazer aparecer os enemies
-
             if(this.enemies[i].enemyType == 'Boss' && this.enemies[i].hp <= 0){        //caso o Boss morra,acabar o jogo
+                this.frames += 200;
                 alert('CA GANDA PATRÃO')
-                this.stop()
-                
+                this.stop()       
             }else if(this.enemies[i].enemyType == 'Enemy' && this.enemies[i].hp <= 0){  //caso seja um enemy a morrer, retirar do array
                 this.enemies.splice(i, 1)
-            }
-            
-            
+                this.frames += 10;
+            }            
         }
-
-      
 
         //criação de X e Y random
         //colocar posições random na border do canvas
@@ -207,21 +176,23 @@ class Game {
         let randomY = Math.floor(Math.random() * this.canvas.height) ; 
         let randomArray = [{x : 0, y : randomY}, {x :this.canvas.width, y: randomY},{x: randomX,y:0},{x:randomX, y:this.canvas.height}];  
         let randomIndex = Math.floor(Math.random() * randomArray.length);
-        let spritesArray = ['../docs/assets/images/NUN_SPRITES.png', '../docs/assets/images/ZOMBIE_SPRITE.png']
+        let spritesArray = ['../docs/assets/images/zombies_sprite.png', '../docs/assets/images/zombies_sprite.png']
         let randomSprite = Math.floor(Math.random() * spritesArray.length)
         console.log(randomSprite);
 
-        if(this.frames % 300 === 0){               //criação de enemies após x tempo                              
+        if(this.frames == 300  /*% 300 === 0*/){               //criação de enemies após x tempo                              
                   
             this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, spritesArray[randomSprite],this.shot, 'Enemy'));
         }
 
-         if (this.frames % 60000 === 0) {             //criação do boss após x tempo
+         if (this.frames === 6000) {             //criação do boss após x tempo
 
-            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 200, 200, 80, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
+            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
          }
 
-               
+    }
+
+    updateScore(){
 
     }
 
