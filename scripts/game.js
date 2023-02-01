@@ -21,7 +21,7 @@ class Game {
     start(){
 
         this.intervalId = setInterval(this.update, 1000 / 60);
-        this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 10);
+        this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 20);
     }
 
     update = () => {
@@ -49,8 +49,7 @@ class Game {
        
           for(let i = 0; i < this.enemies.length; i++){
             if(this.enemies[i].dx >= 600)this.enemies[i].dx = 0;
-            else this.enemies[i].dx += 40;  
-            console.log(this.enemies[i].dx)                                                  
+            else this.enemies[i].dx += 40;                                                 
             } 
             
     }
@@ -176,11 +175,11 @@ class Game {
         let randomY = Math.floor(Math.random() * this.canvas.height) ; 
         let randomArray = [{x : 0, y : randomY}, {x :this.canvas.width, y: randomY},{x: randomX,y:0},{x:randomX, y:this.canvas.height}];  
         let randomIndex = Math.floor(Math.random() * randomArray.length);
-        let spritesArray = ['../docs/assets/images/zombies_sprite.png', '../docs/assets/images/zombies_sprite.png']
+        let spritesArray = ['../docs/assets/images/nun_sprite.png', '../docs/assets/images/zombies_sprite.png']
         let randomSprite = Math.floor(Math.random() * spritesArray.length)
         console.log(randomSprite);
 
-        if(this.frames == 300  /*% 300 === 0*/){               //criação de enemies após x tempo                              
+        if(this.frames % 300 === 0){               //criação de enemies após x tempo                              
                   
             this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, spritesArray[randomSprite],this.shot, 'Enemy'));
         }

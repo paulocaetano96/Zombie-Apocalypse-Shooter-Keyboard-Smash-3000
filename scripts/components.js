@@ -120,7 +120,7 @@ class Enemy {
         enemyImg.src = this.img;
         if(this.movLeft)this.dy = 0;
         else if(this.movRight) this.dy = 52;
-        this.ctx.drawImage(enemyImg, this.dx, this.dy, 40, 50, this.x, this.y, 44, 60);
+        this.ctx.drawImage(enemyImg, this.dx, this.dy, 40, 50, this.x, this.y, 50, 70);
 
     
 
