@@ -314,7 +314,7 @@ form div {
     width: 130px;
     border: 2px solid rgb(0, 0, 0);
     border-radius: 50px;
-    background-color: rgba(224, 224, 224, 0.3);
+    background-color: rgba(224, 224, 224, 0.6);
     color: black;
     font-size: 20px;
     font-weight: bold;;    
@@ -325,7 +325,7 @@ form div {
     width: 150px;
     border: 5px solid rgb(0, 0, 0);
     border-radius: 50px;
-    background-color: rgba(30, 26, 26, 0.7);
+    background-color: rgba(30, 26, 26, 0.8);
     color: whitesmoke;
     font-size: 20px;
     letter-spacing: 3px;
