@@ -3,7 +3,7 @@
 //Player class
 //Used for the player character
 class Player {
-    constructor(x, y, width, height, hp, speedX, speedY, ctx, img, name, canvas){
+    constructor(x, y, width, height, hp, speed, ctx, img, name, canvas){
 
         this.x = x;
         this.y = y;
@@ -12,6 +12,7 @@ class Player {
         this.hp = hp;
         this.speedX = 0;
         this.speedY = 0;
+        this.speed = speed;
         this.ctx = ctx;
         this.img = img;
         this.name = name;
@@ -103,8 +104,10 @@ class Enemy {
         this.img = img;
         this.shot = shot;
         this.enemyType = enemyType;
-        this.dx = 20;
-        this.dy = 585;
+        this.dx = 0;
+        this.dy = 0;
+        this.movLeft = null;
+        this.movRight = null;
        
        
         
@@ -118,10 +121,14 @@ class Enemy {
  
         const enemyImg = new Image();
         enemyImg.src = this.img;
-        this.ctx.drawImage(enemyImg, this.dx, this.dy, 40, 55, this.x, this.y, 40, 55);
+        if(this.movLeft)this.dy = 0;
+        else if(this.movRight) this.dy = 56;
+        this.ctx.drawImage(enemyImg, this.dx, this.dy, 40, 56, this.x, this.y, 40, 56);
+        //console.log(this.dx)
 
-        this.dx += 65;
-        if(this.dx >= 260) this.dx = 20;
+       
+        //this.dx += 65;
+        //if(this.dx >= 260) this.dx = 20;
      
         
 
@@ -130,11 +137,23 @@ class Enemy {
 
     newPos(){
 
-        if(player.x < this.x) this.x -=1;
-        else this.x +=1;
+        if(player.x < this.x) {
+            this.x -=1;
+            this.movLeft = true;
+            this.movRight = false;
+        } else{
+            this.x +=1;
+            this.movLeft = false;
+            this.movRight = true;
+        } 
 
         if(player.y < this.y) this.y -=1;
         else this.y +=1;
+
+        if(player.x == this.x){
+            this.movLeft = false;
+            this.movRight = true;
+        }
         
         
     }
@@ -159,9 +178,9 @@ class Enemy {
     gotShot = () =>{
 
        
-       return !(this.bottom() < this.shot.top() || this.top() > this.shot.bottom() || 
+     /*   return !(this.bottom() < this.shot.top() || this.top() > this.shot.bottom() || 
        this.right() < this.shot.left() || this.left() > this.shot.right())  
-       
+        */
        
     }
 

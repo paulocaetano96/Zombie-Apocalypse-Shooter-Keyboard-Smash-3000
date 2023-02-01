@@ -7,6 +7,7 @@ class Game {
         this.player = player;
         this.canvas = canvas;
         this.intervalId = null;
+        this.intervalSpritesId = null;
         this.frames = 0;
         this.enemies = [];
         this.highScores = [];
@@ -21,6 +22,7 @@ class Game {
     start(){
 
         this.intervalId = setInterval(this.update, 1000 / 60);
+        this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 10);
 
     }
 
@@ -44,6 +46,17 @@ class Game {
         this.player.healthBar();      
         
 
+    }
+
+    updateSprites = () => {
+
+       
+          for(let i = 0; i < this.enemies.length; i++){
+            if(this.enemies[i].dx >= 335)this.enemies[i].dx = 0;
+            else this.enemies[i].dx += 65;  
+            console.log(this.enemies[i].dx)                                                  
+            } 
+            
     }
 
     stop(){
@@ -194,15 +207,18 @@ class Game {
         let randomY = Math.floor(Math.random() * this.canvas.height) ; 
         let randomArray = [{x : 0, y : randomY}, {x :this.canvas.width, y: randomY},{x: randomX,y:0},{x:randomX, y:this.canvas.height}];  
         let randomIndex = Math.floor(Math.random() * randomArray.length);
+        let spritesArray = ['../docs/assets/images/NUN_SPRITES.png', '../docs/assets/images/ZOMBIE_SPRITE.png']
+        let randomSprite = Math.floor(Math.random() * spritesArray.length)
+        console.log(randomSprite);
 
         if(this.frames % 300 === 0){               //criação de enemies após x tempo                              
                   
-            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, '../docs/assets/images/Zombie.png',this.shot, 'Enemy'));
+            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, spritesArray[randomSprite],this.shot, 'Enemy'));
         }
 
-         if (this.frames % 6000 === 0) {             //criação do boss após x tempo
+         if (this.frames % 60000 === 0) {             //criação do boss após x tempo
 
-            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 100, 100, 80, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
+            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 200, 200, 80, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
          }
 
                

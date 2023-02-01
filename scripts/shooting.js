@@ -89,12 +89,9 @@ class Shooting{
                     this.y += 8;
                     break; 
                 
-        }
-
-
+          }
         }
         
-
     }
 
     shotEnd(){

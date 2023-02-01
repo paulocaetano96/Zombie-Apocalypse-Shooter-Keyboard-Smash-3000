@@ -8,7 +8,7 @@ if(!playerName) playerName = 'Ramiro'; */
 let playerImg = '../docs/assets/images/chieficon.png'
 let bulletImg = '../docs/assets/images/pickle_rick_bullet.png';
 
-const player = new Player(canvas.width / 2, canvas.height / 2, 70, 50, 100, 5, 5, ctx, playerImg, 'Ramiro', canvas)
+const player = new Player(canvas.width / 2, canvas.height / 2, 70, 50, 100, 5, ctx, playerImg, 'Ramiro', canvas)
 const shot   = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 0)
 const shot2  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 1)
 const shot3  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 2)
