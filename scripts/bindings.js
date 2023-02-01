@@ -44,21 +44,21 @@ document.addEventListener('keydown', (e) => {
     switch(e.code) {
 
         case 'ArrowUp':
-            player.speedY =- 4;
+            player.speedY =- 10;
             keysPressed.ArrowUp = true;
             break;
 
         case 'ArrowDown':
-             player.speedY = 4;
+             player.speedY = 10;
              keysPressed.ArrowDown = true;
              break;   
              
         case 'ArrowLeft':
-             player.speedX = -4;
+             player.speedX = -10;
              keysPressed.ArrowLeft = true;
              break;  
         case 'ArrowRight':
-             player.speedX = 4;
+             player.speedX = 10;
              keysPressed.ArrowRight = true;
              break;  
         case 'Space':

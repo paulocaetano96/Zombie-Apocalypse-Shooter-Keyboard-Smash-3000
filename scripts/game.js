@@ -32,20 +32,16 @@ class Game {
         this.checkGameOver();                       
         this.player.newPos();
         this.player.draw();
-        this.player.healthBar();
         this.updateEnemies();   
         this.magazine.forEach((shot) =>{
             shot.shotEnd();
             shot.draw();
-            
-        })
+              })
         reload.reloading();
-        
-
         for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
             this.enemies[i].newPos();         
             } 
-              
+        this.player.healthBar();      
         
 
     }
@@ -177,9 +173,7 @@ class Game {
 
         for(let i = 0; i < this.enemies.length; i++){
             this.enemies[i].draw();                                                     //fazer aparecer os enemies
-            /* if(this.enemies[i].gotShot()){                                              //verificar se foram atingidos
-                this.enemies[i].receiveDamage();                                       //causar dano nos enemies
-            }   */
+
             if(this.enemies[i].enemyType == 'Boss' && this.enemies[i].hp <= 0){        //caso o Boss morra,acabar o jogo
                 alert('CA GANDA PATRÃO')
                 this.stop()
@@ -203,7 +197,7 @@ class Game {
 
         if(this.frames % 300 === 0){               //criação de enemies após x tempo                              
                   
-            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, '../docs/assets/images/chieficon.png',this.shot, 'Enemy'));
+            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, '../docs/assets/images/Zombie.png',this.shot, 'Enemy'));
         }
 
          if (this.frames % 6000 === 0) {             //criação do boss após x tempo

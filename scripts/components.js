@@ -103,6 +103,9 @@ class Enemy {
         this.img = img;
         this.shot = shot;
         this.enemyType = enemyType;
+        this.dx = 20;
+        this.dy = 585;
+       
        
         
 
@@ -110,9 +113,17 @@ class Enemy {
 
     draw(){
 
+
+
+ 
         const enemyImg = new Image();
         enemyImg.src = this.img;
-        this.ctx.drawImage(enemyImg, this.x, this.y, this.width, this.height)
+        this.ctx.drawImage(enemyImg, this.dx, this.dy, 40, 55, this.x, this.y, 40, 55);
+
+        this.dx += 65;
+        if(this.dx >= 260) this.dx = 20;
+     
+        
 
 
     }
