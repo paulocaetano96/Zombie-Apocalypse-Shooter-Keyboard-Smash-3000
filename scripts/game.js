@@ -17,12 +17,15 @@ class Game {
         this.magazine = magazine;
         this.score = 0;
        
+       
     }
 
     start(){
 
         this.intervalId = setInterval(this.update, 1000 / 60);
         this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 20);
+        /* const endWindow = document.getElementsByClassName('end-screen');
+        endWindow.style.display = 'none'; */
     }
 
     update = () => {
@@ -58,6 +61,9 @@ class Game {
 
     stop(){
      
+        const endWindow = document.querySelector('.end-screen');
+        endWindow.style.display = 'block';
+        endWindow.style.position = 'absolute'
         clearInterval(this.intervalId);     
 
     }
@@ -162,8 +168,10 @@ class Game {
             this.enemies[i].draw();                                                     //fazer aparecer os enemies
             if(this.enemies[i].enemyType == 'Boss' && this.enemies[i].hp <= 0){        //caso o Boss morra,acabar o jogo
                 this.score += 200;
-                alert('CA GANDA PATRÃO')
-                this.stop()       
+                const windowTitle = document.querySelector('#end-game-condition');
+                windowTitle.innerHTML = 'YOU SAVED THIS APOCALYPTICAL WORLD FROM THE ZOMBIES AND NUNS AND NAZIS'
+                this.stop()    
+
             }else if(this.enemies[i].enemyType == 'Enemy' && this.enemies[i].hp <= 0){  //caso seja um enemy a morrer, retirar do array
                 this.enemies.splice(i, 1)
                 this.score += 10;
@@ -214,8 +222,10 @@ class Game {
         } 
 
         if(this.player.hp <= 0) {                        //se a vida for menor ou igual a zero, perde o jogo
-            alert('AI CA BURRO!!!!');
+            const windowTitle = document.querySelector('#end-game-condition');
+            windowTitle.innerHTML = 'THE WORLD WAS TAKEN BY THE NAZI ZOMBIES AND THE NUNS'
             this.stop();
+            
         }
     }
 
