@@ -47,25 +47,41 @@
             </div>  
          </div>   
                 
-
          <canvas id="canvas" width="1000px" height="500px" style="border: 5px solid white"></canvas>
 
+
+        <div class="end-screen">
+            <h2>PLACEHOLDER</h2>
+
+            <div class="end-score-div">
+                <p>Score</p>
+                <p id="end-score">300</p>
+            </div>
+            <div class="end-buttons-div">
+                <button class="end-buttons">Restart</button>
+                <button class="end-buttons"><a href="index.html">Home Page</a></button>
+            </div>
+         </div>
+            
+<!--         <div class="defeat-screen">
+
+         </div> -->
             
         <div class="middlepart-middle-section"> <!-- div for the menu -->
             <ul class="list">
-                <li><button type="button" class="hide-on-click" id="start-game-button" onclick="playSound()">Start Game</button></li>
+                <li><button type="button" class="hide-on-click" id="start-game-button">Start Game</button></li>
                 <audio src="/docs/assets/sounds/background-song.mp3" id="myAudio"></audio>
 
                 <li><button type="button" class="hide-on-click" id="highscore-button">Highscore</button></li>
                 <li><button type="button" class="hide-on-click" id="credits-button">Credits</button></li>
-                <li><button type="button" class="hide-on-click" id="exit-button">Exit</button></li>
+                <li><button type="button" class="hide-on-click" id="exit-button"><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">Exit</a></button></li>
             </ul>
             
         </div>
 
-        <div class="form-popup hidden" id="myForm">
-            <form action='' class="form-container">
-                <h2 id="form-title">Special One</h2>
+        <div class="form-popup hidden" id="myForm" required>
+            <form action='' class="form-container" required>
+                <h2 id="form-title">who are you, boss?</h2>
 
                 <label for="text" id="player-label"><b>Player Name</b></label>
                 <input type="text" placeholder="Enter nickname" id="player-name" name="text" required>
@@ -73,15 +89,15 @@
                 <h4>Mode</h4>
                 <div>
                     <label for="mode" id="easy-mode-label">easy peasy lemon squeezy</label>
-                    <input type="radio" id="mode" name="mode" value="mode">
+                    <input type="radio" id="easy-mode" name="mode" value="easy peasy lemon squeezy">
                 </div>
                 <div>
                     <label for="mode" id="mid-mode-label">head scratcher</label>
-                    <input type="radio" id="mode" name="mode" value="mode">
+                    <input type="radio" id="average-mode" name="mode" value="head scratcher">
                 </div>
                 <div>
                     <label for="mode" id="hard-mode-label">chaos and madness</label>
-                    <input type="radio" id="mode" name="mode" value="mode">
+                    <input type="radio" id="hard-mode" name="mode" value="chaos and madness">
                 </div>
                 <div id="begin-game-button-div">
                     <button type="button" id="begin-game">Begin!</button>

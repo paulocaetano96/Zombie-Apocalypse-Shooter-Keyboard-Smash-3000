@@ -69,13 +69,14 @@ body {
     display: flex;
     height: 70vh;
     width: 100vw;
-    justify-content: space-evenly;  
+    justify-content: space-evenly;
+    padding-right: 0px;
 }
 
 #game-controls-info {
     
     margin-top: 110px;
-    margin-left: 50px;
+    margin-left: 0px;
     padding-left: 7px;
     padding-right: 7px;    
     line-height: 40px;
@@ -97,14 +98,9 @@ body {
     border-radius: 50px;
     margin-right: 80px !important;
     border-color: antiquewhite;
-    background-image: url('/docs/assets/images/canvas-img.png');
-    background-repeat: no-repeat;
+    background-image: url('/docs/assets/images/canvas-background.png');
     background-size: cover;
-    
-    
 }
-
-
 
 div h3{
     color: rgb(243, 48, 214);
@@ -130,6 +126,7 @@ ol {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 10px;
 
 }
 
@@ -225,8 +222,8 @@ a span {
     border: 5px rgb(255, 164, 17) solid;
     background-color: rgb(27, 23, 23);
     border-radius: 50%;
-    height: 120px;
-    width: 120px;
+    height: 130px;
+    width: 130px;
 }
 
 #bonus-story-line-style-button:hover{
@@ -292,7 +289,7 @@ a span {
 }
 
 form h4 {
-    padding-top: 30px;
+    padding-top: 15px;
     padding-bottom: 15px;
     font-size: 18px;
     font-size: 25px;
@@ -326,7 +323,7 @@ form div {
     margin-top: 40px;
     height: 65px;
     width: 150px;
-    border: 3px solid rgb(0, 0, 0);
+    border: 5px solid rgb(0, 0, 0);
     border-radius: 50px;
     background-color: rgba(30, 26, 26, 0.7);
     color: whitesmoke;
@@ -334,4 +331,61 @@ form div {
     letter-spacing: 3px;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.end-screen {
+    display: none;
+    z-index: 50;
+    background-color: rgba(253, 6, 6, 0.3);
+    color: antiquewhite;
+    height: 300px;
+    width: 400px;
+    border: 1px solid rgba(30, 26, 26, 0.7);
+    border-radius: 40px;
+    padding-top: 50px;
+    padding-bottom: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    z-index: 100;
+}
+
+.end-screen h2{
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.end-score-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 40px;
+}
+
+.end-score-div p{
+    font-size: 25px;
+}
+
+
+.end-buttons-div {
+    height: 200px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.end-buttons{
+    height: 60px;
+    width: 120px;
+    border-radius: 25px;
+    border: 3px solid rgba(30, 26, 26, 0.7);
+    background-color: rgba(30, 26, 26, 0.7);
+    color:antiquewhite;
+    font-weight: bold;
+    font-size: 20px;
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-top: 5px;
+   padding-bottom: 5px;
 }
