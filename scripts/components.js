@@ -108,6 +108,15 @@ class Enemy {
         this.dy = 0;
         this.movLeft = null;
         this.movRight = null;
+        this.setintervalId = null;
+        this.movDiagRightTop = false;
+        this.movDiagLeftTop = false;
+        this.movDiagRightDown = false;
+        this.movDiagLeftDown = false;
+        this.movTop = false;
+        this.movDown = false;
+        this.startX = 0;
+        this.startY = 0;
        
        
         
@@ -145,6 +154,8 @@ class Enemy {
             this.movLeft = false;
             this.movRight = true;
         }
+
+       
         
         
     }
@@ -196,23 +207,134 @@ class Enemy {
 
 class Boss extends Enemy {
 
-    /* constructor(){
-        super();
-        
-        this.startX = 0;
-        this.startY = 0;
-        this.setintervalId = null;
-    } */
+   
 
     draw(){
 
+
         const bossImg = new Image();
         bossImg.src = this.img;
-        this.ctx.drawImage(bossImg, this.x, this.y, this.width, this.height)
-
-    
+        if(this.movLeft) this.dx = 98;
+        else if(this.movRight) this.dx = 298;
+        else if(this.movTop) this.dx = 198;
+        else if(this.movDown) this.dx = 0;
+        else if(this.movDiagLeftDown) this.dx = 50;
+        else if(this.movDiagRightDown) this.dx = 347;
+        else if(this.movDiagLeftTop) this.dx = 148;
+        else if(this.movDiagRightTop) this.dx = 247;
+        this.ctx.drawImage(bossImg, this.dx, this.dy, 50, 58, this.x, this.y, 80, 100);
 
     }
+
+    newPos(){
+
+        if(player.x < this.x) {
+            this.x -=1;
+
+        } else{
+            this.x +=1;
+
+        } 
+
+        if(player.y < this.y) this.y -=1;
+        else this.y +=1;
+
+
+        console.log(this.y)
+
+        //Boss moving Left Top
+        if((player.x == this.x || player.x == this.x + 1 ||player.x == this.x - 1 ) && player.y > this.y){
+            this.movLeft = false;
+            this.movRight = false;
+            this.movTop = false;
+            this.movDown = true;
+            this.movDiagRightTop = false;
+            this.movDiagLeftTop = false;
+            this.movDiagRightDown = false;
+            this.movDiagLeftDown = false; 
+
+        //Boss moving Top    
+        }else if((player.x == this.x || player.x == this.x + 1 ||player.x == this.x - 1 ) && player.y < this.y){
+            this.movLeft = false;
+            this.movRight = false;
+            this.movTop = true;
+            this.movDown = false;
+            this.movDiagRightTop = false;
+            this.movDiagLeftTop = false;
+            this.movDiagRightDown = false;
+            this.movDiagLeftDown = false; 
+
+        //Boss moving Left    
+        }else if((player.y == this.y || player.y == this.y + 1 || player.y == this.y - 1) && player.x < this.x){
+            this.movLeft = true;
+            this.movRight = false;
+            this.movTop = false;
+            this.movDown = false;
+            this.movDiagRightTop = false;
+            this.movDiagLeftTop = false;
+            this.movDiagRightDown = false;
+            this.movDiagLeftDown = false;
+
+        //Boss moving Right    
+        } else if((player.y == this.y || player.y == this.y + 1 || player.y == this.y - 1) && player.x > this.x){
+            this.movLeft = false;
+            this.movRight = true;
+            this.movTop = false;
+            this.movDown = false;
+            this.movDiagRightTop = false;
+            this.movDiagLeftTop = false;
+            this.movDiagRightDown = false;
+            this.movDiagLeftDown = false;
+
+        //Boss moving Left Top
+        }else if(player.x < this.x && player.y < this.y){
+            this.movLeft = false;
+            this.movRight = false;
+            this.movTop = false;
+            this.movDown = false;
+            this.movDiagRightTop = false;
+            this.movDiagLeftTop = true;
+            this.movDiagRightDown = false;
+            this.movDiagLeftDown = false;          
+        
+        //Boss moving Left Down
+        }else if(player.x < this.x && player.y > this.y){
+            this.movLeft = false;
+            this.movRight = false;
+            this.movTop = false;
+            this.movDown = false;
+            this.movDiagRightTop = false;
+            this.movDiagLeftTop = false;
+            this.movDiagRightDown = false;
+            this.movDiagLeftDown = true; 
+        
+        //Boss moving Right Top    
+        }else if(player.x > this.x && player.y < this.y){
+            this.movLeft = false;
+            this.movRight = false;
+            this.movTop = false;
+            this.movDown = false;
+            this.movDiagRightTop = true;
+            this.movDiagLeftTop = false;
+            this.movDiagRightDown = false;
+            this.movDiagLeftDown = false; 
+         
+        //Boss moving right Down    
+        }else if(player.x > this.x && player.y > this.y){
+            this.movLeft = false;
+            this.movRight = false;
+            this.movTop = false;
+            this.movDown = false;
+            this.movDiagRightTop = false;
+            this.movDiagLeftTop = false;
+            this.movDiagRightDown = true;
+            this.movDiagLeftDown = false; 
+
+        //Boss moving Down    
+        } 
+    }
+
+        
 
     update = () => {
 

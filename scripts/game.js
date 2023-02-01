@@ -32,7 +32,7 @@ class Game {
             this.player.name = playerName;
         }
         this.intervalId = setInterval(this.update, 1000 / 60);
-        this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 20);
+        this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 10);
         const endWindow = document.querySelector('.end-screen');
         endWindow.style.display = 'none';
         
@@ -64,11 +64,19 @@ class Game {
 
        
           for(let i = 0; i < this.enemies.length; i++){
-            if(this.enemies[i].dx >= 600)this.enemies[i].dx = 0;
-            else this.enemies[i].dx += 40;                                                 
-            } 
+            
+            if(this.enemies[i].enemyType == 'Enemy'){
+                if(this.enemies[i].dx >= 600)this.enemies[i].dx = 0;
+                else this.enemies[i].dx += 40;  
+            }  
+              
+            if(this.enemies[i].enemyType == 'Boss') {                                          
+                if(this.enemies[i].dy >= 174)this.enemies[i].dy = 0;
+                else this.enemies[i].dy += 58;   
+                 } 
             
     }
+}
 
     stop(){
      
@@ -206,9 +214,9 @@ class Game {
             this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, spritesArray[randomSprite],this.shot, 'Enemy'));
         }
 
-         if (this.frames === 600) {             //criação do boss após x tempo
+         if (this.frames === 800) {             //criação do boss após x tempo
 
-            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
+            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx, '../docs/assets/images/Boss_Sprite.png', this.shot, 'Boss'));
          }
 
     }
