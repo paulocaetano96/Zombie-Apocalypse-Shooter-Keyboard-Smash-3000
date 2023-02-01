@@ -1,7 +1,7 @@
 /** @type {HTMLCanvasElement} */
 
 class Game {
-    constructor(ctx, player, canvas, playerSpeed, enemySpeed, shot, magazine){
+    constructor(ctx, player, canvas, playerSpeed, enemySpeed, shot, magazine, reload){
 
         this.ctx = ctx;
         this.player = player;
@@ -15,17 +15,28 @@ class Game {
         this.enemySpeed = enemySpeed;
         this.shot = shot;
         this.magazine = magazine;
+        this.reload = reload;
         this.score = 0;
+        
        
        
     }
 
     start(){
 
+        const playerName = document.getElementById('player-name').value;
+
+        if(!playerName || playerName == '' || playerName == ' '){
+            this.player.name = 'Jacinto'
+        }else{
+            this.player.name = playerName;
+        }
         this.intervalId = setInterval(this.update, 1000 / 60);
         this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 20);
-        /* const endWindow = document.getElementsByClassName('end-screen');
-        endWindow.style.display = 'none'; */
+        const endWindow = document.querySelector('.end-screen');
+        endWindow.style.display = 'none';
+        
+        
     }
 
     update = () => {
@@ -64,7 +75,8 @@ class Game {
         const endWindow = document.querySelector('.end-screen');
         endWindow.style.display = 'block';
         endWindow.style.position = 'absolute'
-        clearInterval(this.intervalId);     
+        clearInterval(this.intervalId);  
+        gameStarted = false; 
 
     }
 
@@ -169,7 +181,7 @@ class Game {
             if(this.enemies[i].enemyType == 'Boss' && this.enemies[i].hp <= 0){        //caso o Boss morra,acabar o jogo
                 this.score += 200;
                 const windowTitle = document.querySelector('#end-game-condition');
-                windowTitle.innerHTML = 'YOU SAVED THIS APOCALYPTICAL WORLD FROM THE ZOMBIES AND NUNS AND NAZIS'
+                windowTitle.innerHTML = `${this.player.name} SAVED THIS APOCALYPTICAL WORLD FROM THE ZOMBIES AND NUNS AND NAZIS`
                 this.stop()    
 
             }else if(this.enemies[i].enemyType == 'Enemy' && this.enemies[i].hp <= 0){  //caso seja um enemy a morrer, retirar do array
@@ -199,8 +211,6 @@ class Game {
             this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
          }
 
-        
-
     }
 
     updateScore(){
@@ -212,6 +222,17 @@ class Game {
 
     }
 
+    restart(){
+
+        this.player.hp = 100;
+        this.enemies = [];
+        this.frames = 0;
+        this.score = 0;
+        this.reload.countShots = 0;
+        gameStarted = true;
+        this.start();
+        
+    }
 
     checkGameOver(){
         const crashed = this.enemies.some((enemy) =>{    //.some vai verificar o array dos enemies, correr a função crashWith com todos os enemies

@@ -8,6 +8,9 @@ if(!playerName) playerName = 'Ramiro'; */
 let playerImg = '../docs/assets/images/chieficon.png'
 let bulletImg = '../docs/assets/images/pickle_rick_bullet.png';
 
+
+
+
 const player = new Player(canvas.width / 2, canvas.height / 2, 70, 50, 100, 5, ctx, playerImg, 'Ramiro', canvas)
 const shot   = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 0)
 const shot2  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 1)
@@ -18,7 +21,7 @@ const shot6  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ct
 const magazine = [shot, shot2, shot3, shot4, shot5, shot6];
 const reload = new Reload(magazine, 2000, 5, ctx);
 //const boss = new Boss(120, 120, 100, 100, 200, ctx, '../docs/assets/images/bossImage.png', shot, 'Boss')
-const newGame = new Game(ctx, player, canvas, 5, 5, shot, magazine);
+const newGame = new Game(ctx, player, canvas, 5, 5, shot, magazine, reload);
 
 
 document.getElementById("start-game-button").onclick = () => {
@@ -33,6 +36,7 @@ document.getElementById("start-game-button").onclick = () => {
 
 document.getElementById('begin-game').onclick = () => {  
 
+    gameStarted = true;
     newGame.start();
     document.getElementById('myForm').classList.add("hidden")
 
@@ -51,5 +55,10 @@ document.getElementById("exit-button").onclick = () => {
 
 document.getElementById("highscore-button").onclick = () => {
     location.href = "./highscore.html"
+}
+
+document.getElementById('restart-button').onclick = () => {
+    
+    newGame.restart();
 }
 
