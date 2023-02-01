@@ -182,7 +182,6 @@ class Enemy {
         this.shot.shotFired = false;
         console.log(this.hp) */
         this.hp -= 5;
-        console.log(this.hp)
         //console.log(this.hp)
         
         
@@ -197,6 +196,14 @@ class Enemy {
 
 class Boss extends Enemy {
 
+    /* constructor(){
+        super();
+        
+        this.startX = 0;
+        this.startY = 0;
+        this.setintervalId = null;
+    } */
+
     draw(){
 
         const bossImg = new Image();
@@ -207,7 +214,26 @@ class Boss extends Enemy {
 
     }
 
+    update = () => {
+
+        //this.setintervalId = setInterval(this.specialAttack, 4000);
+        console.log('callback')
+        this.update();
+        
+
+    }
     specialAttack(){
+
+       
+   /*  const attackImg = new Image();
+    attackImg.src = this.img;
+    if(this.movLeft)this.dy = 0;
+    else if(this.movRight) this.dy = 52;
+    this.ctx.drawImage(enemyImg, this.dx, this.dy, 40, 50, this.x, this.y, 50, 70); */
+    
+    this.ctx.drawImage(this.bullet, this.x, this.y, this.width, this.height) 
+    
+        
 
     }
     

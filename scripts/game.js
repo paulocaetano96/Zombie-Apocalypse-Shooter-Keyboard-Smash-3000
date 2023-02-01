@@ -15,6 +15,7 @@ class Game {
         this.enemySpeed = enemySpeed;
         this.shot = shot;
         this.magazine = magazine;
+        this.score = 0;
        
     }
 
@@ -27,7 +28,8 @@ class Game {
     update = () => {
 
         //Function responsbile for updating the game
-        this.frames++;                                 //frames passed, used for time and score
+        this.frames++; 
+        this.updateScore();                                //frames passed, used for time and score
         this.clear();         
         this.checkGameOver();                       
         this.player.newPos();
@@ -159,12 +161,12 @@ class Game {
         for(let i = 0; i < this.enemies.length; i++){
             this.enemies[i].draw();                                                     //fazer aparecer os enemies
             if(this.enemies[i].enemyType == 'Boss' && this.enemies[i].hp <= 0){        //caso o Boss morra,acabar o jogo
-                this.frames += 200;
+                this.score += 200;
                 alert('CA GANDA PATRÃO')
                 this.stop()       
             }else if(this.enemies[i].enemyType == 'Enemy' && this.enemies[i].hp <= 0){  //caso seja um enemy a morrer, retirar do array
                 this.enemies.splice(i, 1)
-                this.frames += 10;
+                this.score += 10;
             }            
         }
 
@@ -177,21 +179,28 @@ class Game {
         let randomIndex = Math.floor(Math.random() * randomArray.length);
         let spritesArray = ['../docs/assets/images/nun_sprite.png', '../docs/assets/images/zombies_sprite.png']
         let randomSprite = Math.floor(Math.random() * spritesArray.length)
-        console.log(randomSprite);
+        
 
         if(this.frames % 300 === 0){               //criação de enemies após x tempo                              
                   
             this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, spritesArray[randomSprite],this.shot, 'Enemy'));
         }
 
-         if (this.frames === 6000) {             //criação do boss após x tempo
+         if (this.frames === 600) {             //criação do boss após x tempo
 
             this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx, '../docs/assets/images/bossImage.png', this.shot, 'Boss'));
          }
 
+        
+
     }
 
     updateScore(){
+
+
+        this.score ++;
+        document.getElementById('end-score').innerHTML = this.score;
+
 
     }
 
