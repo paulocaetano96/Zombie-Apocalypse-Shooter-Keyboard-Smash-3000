@@ -63,10 +63,6 @@
             </div>
          </div>
             
-<!--         <div class="defeat-screen">
-
-         </div> -->
-            
         <div class="middlepart-middle-section"> <!-- div for the menu -->
             <ul class="list">
                 <li><button type="button" class="hide-on-click" id="start-game-button">Start Game</button></li>
@@ -74,17 +70,17 @@
 
                 <li><button type="button" class="hide-on-click" id="highscore-button">Highscore</button></li>
                 <li><button type="button" class="hide-on-click" id="credits-button">Credits</button></li>
-                <li><button type="button" class="hide-on-click" id="exit-button"><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">Exit</a></button></li>
+                <li><button type="button" class="hide-on-click" id="exit-button"><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">Exit</a></button></li>
             </ul>
             
         </div>
 
-        <div class="form-popup hidden" id="myForm" required>
-            <form action='' class="form-container" required>
+        <div class="form-popup hidden" id="myForm">
+            <form action='' id="form" class="form-container" required>
                 <h2 id="form-title">who are you, boss?</h2>
 
                 <label for="text" id="player-label"><b>Player Name</b></label>
-                <input type="text" placeholder="Enter nickname" id="player-name" name="text" required>
+                <input type="text" placeholder="Enter nickname" id="player-name" name="text" required autocomplete="off">
                 
                 <h4>Mode</h4>
                 <div>
