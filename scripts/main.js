@@ -7,6 +7,8 @@ const ctx = canvas.getContext('2d');
 if(!playerName) playerName = 'Ramiro'; */
 let playerImg = 'docs/assets/images/main_char_sprite.png'
 let bulletImg = 'docs/assets/images/bullet.png';
+let bossBulletImg = 'docs/assets/images/boss_bullets.png';
+let bossBullet2Img = 'docs/assets/images/boss_bullets_vertical.png';
 
 
 

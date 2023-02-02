@@ -87,8 +87,8 @@
                 </tr>
                 <tr>
                     <td>Ninth Place</td>
-                    <td id="ninth-place-name"></td>
-                    <td id="ninth-place-score"></td>
+                    <td id="nineth-place-name"></td>
+                    <td id="nineth-place-score"></td>
                 </tr>
                 <tr>
                     <td>Tenth Place</td>
@@ -108,16 +108,44 @@
 
    
 
-    <script>
-        document.getElementById('first-place-name').innerHTML = localData[0].name;
-
-    </script>
+    
 
     <script src="scripts/highscore.js"></script>   
     <script src="scripts/bindings.js"></script>   
     <script src="scripts/components.js"></script>
     <script src="scripts/shooting.js"></script>
     <script src="scripts/game.js"></script>    
-    <script src="scripts/main.js"></script>   
+    <script src="scripts/main.js"></script> 
+
+    <script> 
+
+    let highScores = JSON.parse(localStorage.getItem('playerScore'));
+    highScores.sort(( {score: a }, {score: b}) => a - b)
+    highScores.reverse();
+
+    //Highscores names
+    if(highScores[0]) document.getElementById("first-place-name").innerHTML = highScores[0].name
+    if(highScores[1]) document.getElementById("second-place-name").innerHTML = highScores[1].name
+    if(highScores[2]) document.getElementById("third-place-name").innerHTML = highScores[2].name
+    if(highScores[3]) document.getElementById("fourth-place-name").innerHTML = highScores[3].name
+    if(highScores[4]) document.getElementById("fifth-place-name").innerHTML = highScores[4].name
+    if(highScores[5]) document.getElementById("sixth-place-name").innerHTML = highScores[5].name
+    if(highScores[6]) document.getElementById("seventh-place-name").innerHTML = highScores[6].name
+    if(highScores[7]) document.getElementById("eigth-place-name").innerHTML = highScores[7].name
+    if(highScores[8]) document.getElementById("nineth-place-name").innerHTML = highScores[8].name
+    if(highScores[9]) document.getElementById("tenth-place-name").innerHTML = highScores[9].name 
+
+    //Highscores scores
+    if(highScores[0]) document.getElementById("first-place-score").innerHTML = highScores[0].score
+    if(highScores[1]) document.getElementById("second-place-score").innerHTML = highScores[1].score
+    if(highScores[2]) document.getElementById("third-place-score").innerHTML = highScores[2].score
+    if(highScores[3]) document.getElementById("fourth-place-score").innerHTML = highScores[3].score
+    if(highScores[4]) document.getElementById("fifth-place-score").innerHTML = highScores[4].score
+    if(highScores[5]) document.getElementById("sixth-place-score").innerHTML = highScores[5].score
+    if(highScores[6]) document.getElementById("seventh-place-score").innerHTML = highScores[6].score
+    if(highScores[7]) document.getElementById("eigth-place-score").innerHTML = highScores[7].score
+    if(highScores[8]) document.getElementById("nineth-place-score").innerHTML = highScores[8].score
+    if(highScores[9]) document.getElementById("tenth-place-score").innerHTML = highScores[9].score
+    </script>
 </body>
 </html>

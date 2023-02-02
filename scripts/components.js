@@ -377,24 +377,33 @@ class Boss extends Enemy {
 }
 
 class SpecialAttack extends Enemy {
-    constructor(x, y, widht, height, hp, ctx, img, shot, enemyType, player ,playerPosX, playerPosY, direction){
+    constructor(x, y, widht, height, hp, ctx, img, shot, enemyType, player ,playerPosX, playerPosY, direction, img2){
         super(x, y, widht, height, hp, ctx, img, shot, enemyType, player);
         this.playerPosX = playerPosX;
         this.playerPosY = playerPosY;
         this.direction = direction;
+        this.img2 = img2;
 
     }
 
     draw(){
 
-        /* const attackImg = new Image();
-        attackImg.src = this.img;
-        if(this.movLeft)this.dy = 0;
-        else if(this.movRight) this.dy = 52;
-        this.ctx.drawImage(attackImg, this.dx, this.dy, 40, 50, this.x, this.y, 50, 70); */
+        
+        
+        const bulletsImg = new Image();
+        const bullets2Img = new Image();
+        bulletsImg.src = this.img;
+        bullets2Img.src = this.img2;
 
-        this.ctx.fillStyle = 'Black';
-        this.ctx.fillRect(this.x, this.y, 100, 20);
+
+        if(this.direction == 'Left' || this.direction == 'Right' || this.direction == 'RightTop' ||
+        this.direction == 'LeftTop' || this.direction == 'RightDown' || this.direction == 'LeftDown'){
+
+            this.ctx.drawImage(bulletsImg, this.x, this.y, 80, 20);
+         }else {
+            this.ctx.drawImage(bullets2Img, this.x, this.y, 20, 80);
+         }
+        
         
 
     
