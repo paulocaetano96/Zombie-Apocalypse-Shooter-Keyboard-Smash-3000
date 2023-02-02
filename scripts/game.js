@@ -250,7 +250,7 @@ class Game {
             this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, spritesArray[randomSprite],this.shot, 'Enemy', this.player));
         }
 
-         if (this.frames === 1700) {             //criação do boss após x tempo
+         if (this.frames === 2000) {             //criação do boss após x tempo
 
             this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx, 'docs/assets/images/Boss_Sprite.png', this.shot, 'Boss', this.player));
             
@@ -258,7 +258,7 @@ class Game {
            
             }
 
-            if((this.frames > 1700 && (this.frames  % 600) == 0) ){
+            if((this.frames > 2000 && (this.frames  % 600) == 0) ){
 
                 console.log('tem de sair')
                 this.enemies.forEach((enemy) => {
