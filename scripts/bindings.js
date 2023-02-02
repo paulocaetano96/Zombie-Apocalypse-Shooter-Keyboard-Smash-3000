@@ -50,29 +50,28 @@ document.addEventListener('keydown', (e) => {
              if(!shot4.shotFired)shot4.lastKey = lastKeyPressed;
              if(!shot5.shotFired)shot5.lastKey = lastKeyPressed;
              if(!shot6.shotFired)shot6.lastKey = lastKeyPressed;
-
              reload.fireShot();
-             
              break;
+        
         }
                 
                 
 
     if(keysPressed.ArrowUp  && keysPressed.ArrowLeft ) {
        lastKeyPressed = 'ArrowUpLeft';  
-       player.lastKeyPressed = 'ArrowUpLeft';
+      
 
     }else if(keysPressed.ArrowUp  && keysPressed.ArrowRight ){
        lastKeyPressed = 'ArrowUpRight'
-       player.lastKeyPressed = 'ArrowUpRight';
+       
 
     } else if(keysPressed.ArrowDown  && keysPressed.ArrowLeft ){
         lastKeyPressed = 'ArrowDownLeft';
-        player.lastKeyPressed = 'ArrowDownLeft';
+        
 
     } else if(keysPressed.ArrowDown && keysPressed.ArrowRight){
         lastKeyPressed = 'ArrowDownRight'; 
-        player.lastKeyPressed = 'ArrowDownRight';  
+        
 
     } else if(keysPressed.ArrowUp){
         lastKeyPressed = 'ArrowUp'
@@ -100,22 +99,29 @@ document.addEventListener('keyup', (e) => {
     case 'ArrowUp':
         player.speedY = 0;
         keysPressed.ArrowUp = false;
+        player.lastKeyPressed = 'None'; 
         break;
 
     case 'ArrowDown':
         player.speedY = 0;
         keysPressed.ArrowDown = false;
+        player.lastKeyPressed = 'None'; 
         break;   
         
     case 'ArrowLeft':
         player.speedX = 0;
         keysPressed.ArrowLeft = false;
+        player.lastKeyPressed = 'None'; 
         break;  
 
     case 'ArrowRight':
         player.speedX = 0;
         keysPressed.ArrowRight = false;
+        player.lastKeyPressed = 'None'; 
         break; 
+
+        
+          
 
     }
     }

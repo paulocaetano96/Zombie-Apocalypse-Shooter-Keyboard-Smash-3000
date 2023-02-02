@@ -27,6 +27,8 @@ class Player {
         this.movDiagRightDown = false;
         this.movDiagLeftDown = false; 
         this.lastKeyPressed = lastKeyPressed;
+        this.dx = 0;
+        this.dy = 0;
         
  
 
@@ -37,15 +39,13 @@ class Player {
     draw(){
 
         const playerImg = new Image();
-        /* playerImg.src = this.img;
-        this.ctx.drawImage(playerImg, this.x, this.y, this.width, this.height) */
-
-        //--------------
-        if(this.movLeft) this.dx = 40;
-        else if(this.movRight) this.dx = 0;
-        
+        playerImg.src = this.img;
+        if(this.lastKeyPressed == 'ArrowLeft' || this.lastKeyPressed == 'ArrowUp') this.dy = 50;
+        else if(this.lastKeyPressed == 'ArrowRight' || this.lastKeyPressed == 'ArrowDown') this.dy = 0;
+        else if(this.lastKeyPressed == 'None') this.dy = 110;
         this.ctx.drawImage(playerImg, this.dx, this.dy, 40, 50, this.x, this.y, 50, 75);
-        //---------------
+        
+        
         
     }
 

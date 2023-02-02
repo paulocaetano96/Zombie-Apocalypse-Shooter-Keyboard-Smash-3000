@@ -25,6 +25,9 @@ class Game {
     start(){
 
         const playerName = document.getElementById('player-name').value;
+        const endWindow = document.querySelector('.end-screen');
+        endWindow.style.display = 'none';
+        
 
         if(!playerName || playerName == '' || playerName == ' '){
             this.player.name = 'Jacinto'
@@ -33,8 +36,6 @@ class Game {
         }
         this.intervalId = setInterval(this.update, 1000 / 60);
         this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 10);
-        const endWindow = document.querySelector('.end-screen');
-        endWindow.style.display = 'none';
         
         
     }
@@ -63,8 +64,8 @@ class Game {
     updateSprites = () => {
 
         //PLayer Sprite
-        if(this.player.dx >= 280)this.player.dx = 0;
-        else this.player.dx += 40;
+        if(this.player.dx >= 260)this.player.dx = 0;
+        else this.player.dx += 45;
        
         //Enemies sprites
           for(let i = 0; i < this.enemies.length; i++){
@@ -242,6 +243,7 @@ class Game {
         this.score = 0;
         this.reload.countShots = 0;
         gameStarted = true;
+        clearInterval(this.intervalSpritesId);
         this.start();
         
     }
