@@ -1,5 +1,9 @@
 /** @type {HTMLCanvasElement} */
 
+let localData = [];
+let info = undefined;
+let highscore = {};
+
 class Game {
     constructor(ctx, player, canvas, playerSpeed, enemySpeed, shot, magazine, reload){
 
@@ -37,6 +41,14 @@ class Game {
         this.intervalId = setInterval(this.update, 1000 / 60);
         this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 10);
         
+        localData = JSON.parse(localStorage.getItem('playerScore'));
+        console.log(localData)
+        if (!(localData == null)) {
+            console.log('nao exite')
+            
+            localData = JSON.parse(localStorage.getItem('playerScore'));
+            
+        }   else localData = [];
         
     }
 
@@ -85,11 +97,26 @@ class Game {
 
     stop(){
      
+       
         const endWindow = document.querySelector('.end-screen');
         endWindow.style.display = 'block';
         endWindow.style.position = 'absolute'
         clearInterval(this.intervalId);  
-        gameStarted = false; 
+        gameStarted = false;
+/*         document.getElementById('first-place-score').innerHTML = this.score;
+ */        
+
+        highscore = {name: this.player.name, score: this.score};
+       
+
+        localData.push(highscore);
+        localStorage.setItem("playerScore", JSON.stringify(localData)); 
+        
+        
+        localData.sort(( {score: a }, {score: b}) => a - b)
+        
+        localData.reverse();
+        console.log(localData)
 
     }
 
