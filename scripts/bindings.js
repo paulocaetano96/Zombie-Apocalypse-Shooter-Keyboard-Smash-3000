@@ -21,20 +21,24 @@ document.addEventListener('keydown', (e) => {
         case 'ArrowUp':
             player.speedY =- player.speed;
             keysPressed.ArrowUp = true;
+            player.lastKeyPressed = 'ArrowUp';
             break;
 
         case 'ArrowDown':
              player.speedY = player.speed;
              keysPressed.ArrowDown = true;
+             player.lastKeyPressed = 'ArrowDown';
              break;   
              
         case 'ArrowLeft':
              player.speedX = -player.speed;
              keysPressed.ArrowLeft = true;
+             player.lastKeyPressed = 'ArrowLeft';
              break;  
         case 'ArrowRight':
              player.speedX = player.speed;
              keysPressed.ArrowRight = true;
+             player.lastKeyPressed = 'ArrowRight';
              break;  
         case 'Space':
              shot.x = player.x;
@@ -56,15 +60,19 @@ document.addEventListener('keydown', (e) => {
 
     if(keysPressed.ArrowUp  && keysPressed.ArrowLeft ) {
        lastKeyPressed = 'ArrowUpLeft';  
+       player.lastKeyPressed = 'ArrowUpLeft';
 
     }else if(keysPressed.ArrowUp  && keysPressed.ArrowRight ){
        lastKeyPressed = 'ArrowUpRight'
+       player.lastKeyPressed = 'ArrowUpRight';
 
     } else if(keysPressed.ArrowDown  && keysPressed.ArrowLeft ){
         lastKeyPressed = 'ArrowDownLeft';
+        player.lastKeyPressed = 'ArrowDownLeft';
 
     } else if(keysPressed.ArrowDown && keysPressed.ArrowRight){
-        lastKeyPressed = 'ArrowDownRight';   
+        lastKeyPressed = 'ArrowDownRight'; 
+        player.lastKeyPressed = 'ArrowDownRight';  
 
     } else if(keysPressed.ArrowUp){
         lastKeyPressed = 'ArrowUp'

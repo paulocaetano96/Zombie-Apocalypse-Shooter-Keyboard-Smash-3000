@@ -62,7 +62,11 @@ class Game {
 
     updateSprites = () => {
 
+        //PLayer Sprite
+        if(this.player.dx >= 280)this.player.dx = 0;
+        else this.player.dx += 40;
        
+        //Enemies sprites
           for(let i = 0; i < this.enemies.length; i++){
             
             if(this.enemies[i].enemyType == 'Enemy'){

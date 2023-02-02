@@ -3,7 +3,7 @@
 //Player class
 //Used for the player character
 class Player {
-    constructor(x, y, width, height, hp, speed, ctx, img, name, canvas){
+    constructor(x, y, width, height, hp, speed, ctx, img, name, canvas, lastKeyPressed){
 
         this.x = x;
         this.y = y;
@@ -18,6 +18,15 @@ class Player {
         this.name = name;
         this.canvas = canvas;
         this.initialHp = hp;
+        this.movLeft = false;
+        this.movRight = false;
+        this.movTop = false;
+        this.movDown = false;
+        this.movDiagRightTop = false;
+        this.movDiagLeftTop = false;
+        this.movDiagRightDown = false;
+        this.movDiagLeftDown = false; 
+        this.lastKeyPressed = lastKeyPressed;
         
  
 
@@ -28,8 +37,15 @@ class Player {
     draw(){
 
         const playerImg = new Image();
-        playerImg.src = this.img;
-        this.ctx.drawImage(playerImg, this.x, this.y, this.width, this.height)
+        /* playerImg.src = this.img;
+        this.ctx.drawImage(playerImg, this.x, this.y, this.width, this.height) */
+
+        //--------------
+        if(this.movLeft) this.dx = 40;
+        else if(this.movRight) this.dx = 0;
+        
+        this.ctx.drawImage(playerImg, this.dx, this.dy, 40, 50, this.x, this.y, 50, 75);
+        //---------------
         
     }
 
@@ -43,6 +59,8 @@ class Player {
 
         this.x += this.speedX;
         this.y += this.speedY;
+
+       
         
          
       
