@@ -98,7 +98,7 @@ body {
     border-radius: 50px;
     margin-right: 80px !important;
     border-color: antiquewhite;
-    background-image: url('/docs/assets/images/canvas-background.png');
+    background-image: url('./docs/assets/images/canvas-background.png');
     background-size: cover;
 }
 
