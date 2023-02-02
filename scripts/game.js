@@ -1,5 +1,9 @@
 /** @type {HTMLCanvasElement} */
 
+let localData = [];
+let info = undefined;
+let highscore = {};
+
 class Game {
     constructor(ctx, player, canvas, playerSpeed, enemySpeed, shot, magazine, reload){
 
@@ -37,6 +41,14 @@ class Game {
         this.intervalId = setInterval(this.update, 1000 / 60);
         this.intervalSpritesId = setInterval(this.updateSprites, 1000 / 10);
         
+        localData = JSON.parse(localStorage.getItem('playerScore'));
+        console.log(localData)
+        if (!(localData == null)) {
+            console.log('nao exite')
+            
+            localData = JSON.parse(localStorage.getItem('playerScore'));
+            
+        }   else localData = [];
         
     }
 
@@ -85,11 +97,26 @@ class Game {
 
     stop(){
      
+       
         const endWindow = document.querySelector('.end-screen');
         endWindow.style.display = 'block';
         endWindow.style.position = 'absolute'
         clearInterval(this.intervalId);  
-        gameStarted = false; 
+        gameStarted = false;
+/*         document.getElementById('first-place-score').innerHTML = this.score;
+ */        
+
+        highscore = {name: this.player.name, score: this.score};
+       
+
+        localData.push(highscore);
+        localStorage.setItem("playerScore", JSON.stringify(localData)); 
+        
+        
+        localData.sort(( {score: a }, {score: b}) => a - b)
+        
+        localData.reverse();
+        console.log(localData)
 
     }
 
@@ -212,17 +239,43 @@ class Game {
         let randomIndex = Math.floor(Math.random() * randomArray.length);
         let spritesArray = ['docs/assets/images/nun_sprite.png', 'docs/assets/images/zombies_sprite.png']
         let randomSprite = Math.floor(Math.random() * spritesArray.length)
+        let bossDirection = '';
+        let bossPosX = 0;
+        let bossPosY = 0;
         
 
-        if(this.frames % 300 === 0){               //criação de enemies após x tempo                              
+        if(this.frames % 30000 === 0){               //criação de enemies após x tempo                              
                   
-            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, spritesArray[randomSprite],this.shot, 'Enemy'));
+            this.enemies.push(new Enemy(randomArray[randomIndex].x, randomArray[randomIndex].y, 30, 30, 10, this.ctx, spritesArray[randomSprite],this.shot, 'Enemy', this.player));
         }
 
-         if (this.frames === 800) {             //criação do boss após x tempo
+         if (this.frames === 300) {             //criação do boss após x tempo
 
-            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx, 'docs/assets/images/Boss_Sprite.png', this.shot, 'Boss'));
-         }
+            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx, 'docs/assets/images/Boss_Sprite.png', this.shot, 'Boss', this.player));
+            
+
+           
+            }
+
+            if((this.frames  % 600) == 0){
+
+                console.log('tem de sair')
+                this.enemies.forEach((enemy) => {
+                    if(enemy.enemyType == 'Boss'){
+                        bossPosX = enemy.x;
+                        bossPosY = enemy.y;
+                        bossDirection = enemy.actualDirection;
+                        
+
+
+                    }
+                })
+                console.log(bossDirection)
+                this.enemies.push(new SpecialAttack(bossPosX , bossPosY + 35, 30, 30, 100, this.ctx, '',this.shot, 'SpecialAttack',this.player, this.player.x, this.player.y, bossDirection));
+                //this.enemies[this.enemies.length - 1].direction();
+                //console.log(this.enemies.length);
+        
+        }
 
     }
 
