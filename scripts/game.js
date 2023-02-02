@@ -189,7 +189,7 @@ class Game {
             if(this.enemies[i].enemyType == 'Boss' && this.enemies[i].hp <= 0){        //caso o Boss morra,acabar o jogo
                 this.score += 200;
                 const windowTitle = document.querySelector('#end-game-condition');
-                windowTitle.innerHTML = `${this.player.name} SAVED THIS APOCALYPTICAL WORLD FROM THE ZOMBIES AND NUNS AND NAZIS`
+                windowTitle.innerHTML = `${this.player.name} saved this world from the nazi zombies and nuns`
                 this.stop()    
 
             }else if(this.enemies[i].enemyType == 'Enemy' && this.enemies[i].hp <= 0){  //caso seja um enemy a morrer, retirar do array
@@ -252,7 +252,7 @@ class Game {
 
         if(this.player.hp <= 0) {                        //se a vida for menor ou igual a zero, perde o jogo
             const windowTitle = document.querySelector('#end-game-condition');
-            windowTitle.innerHTML = 'THE WORLD WAS TAKEN BY THE NAZI ZOMBIES AND THE NUNS'
+            windowTitle.innerHTML = 'The world was taken by the nazi zombies and nuns'
             this.stop();
             
         }

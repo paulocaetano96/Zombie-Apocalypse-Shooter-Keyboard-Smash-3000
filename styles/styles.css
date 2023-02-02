@@ -351,9 +351,9 @@ form div {
     margin-top: 80px;
 }
 
-#end-game-condition{
-    text-transform: lowercase;
-}
+/* #end-game-condition{
+    
+} */
 
 .end-screen h2{
     text-align: center;

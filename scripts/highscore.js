@@ -17,13 +17,13 @@ btn1.addEventListener("click", fun1);
 
  */
 
-window.addEventListener('load', () => {
+/* window.addEventListener('load', () => {
 
     const params = (new URL(document.location)).searchParams;
     const name
 
 
-})
+}) */
 
 
 
