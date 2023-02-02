@@ -103,7 +103,7 @@ class Player {
 
 
         const healthBarImg = new Image();
-        healthBarImg.src = '/docs/assets/images/health_bar.png';
+        healthBarImg.src = './docs/assets/images/health_bar.png';
         this.ctx.drawImage(healthBarImg, 43, 13, this.initialHp + 23, 50);
 
         /* this.ctx.fillStyle = 'Gray'

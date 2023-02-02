@@ -5,8 +5,8 @@ const ctx = canvas.getContext('2d');
 
 /* let playerName = document.getElementById('player-name').value;
 if(!playerName) playerName = 'Ramiro'; */
-let playerImg = './docs/assets/images/main_char_sprite.png'
-let bulletImg = './docs/assets/images/bullet.png';
+let playerImg = '/docs/assets/images/main_char_sprite.png'
+let bulletImg = '/docs/assets/images/bullet.png';
 
 
 
