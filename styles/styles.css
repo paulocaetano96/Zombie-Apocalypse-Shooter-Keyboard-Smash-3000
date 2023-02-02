@@ -380,7 +380,7 @@ form div {
     95% {
         background-color: rgba(47, 54, 255, 0.7);
         border: 5px ridge rgb(9, 155, 1);
-        color: blueviolet;
+        color: rgb(255, 0, 0);
         font-weight: bold;
       }
     100% {

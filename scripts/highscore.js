@@ -1,4 +1,6 @@
 
+
+
 document.getElementById("home-page-button").onclick = () => {
     location.href = "index.html"
 }
@@ -24,8 +26,6 @@ btn1.addEventListener("click", fun1);
 
 
 }) */
-
-
 
 
 
