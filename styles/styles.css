@@ -14,7 +14,7 @@ body {
 #scrolling-background-image {
     z-index: -50;
     position: absolute;
-    background: url('../docs/assets/images/backgroundimg.jpg') repeat-x;
+    background: url('docs/assets/images/backgroundimg.jpg') repeat-x;
     height: 100vh;
     width: 3840px;
     animation: slide 25s linear infinite;
@@ -98,7 +98,7 @@ body {
     border-radius: 50px;
     margin-right: 80px !important;
     border-color: antiquewhite;
-    background-image: url('../docs/assets/images/canvas-background.png');
+    background-image: url('docs/assets/images/canvas-background.png');
     background-size: cover;
 }
 

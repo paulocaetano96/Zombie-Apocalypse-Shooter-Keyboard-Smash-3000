@@ -177,7 +177,7 @@ class Reload {
 
 
         const reloadImg = new Image();
-        reloadImg.src = './docs/assets/images/bullet.png';
+        reloadImg.src = 'docs/assets/images/bullet.png';
         if(this.countShots <= 0){
             this.ctx.drawImage(reloadImg, 700, 20, 20, 25);
             this.ctx.drawImage(reloadImg, 750, 20, 20, 25);
