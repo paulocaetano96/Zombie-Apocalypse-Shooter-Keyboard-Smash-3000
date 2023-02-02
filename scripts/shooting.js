@@ -175,13 +175,62 @@ class Reload {
 
     reloading(){
 
-        this.ctx.font = "bold 48px serif";
-        this.ctx.fillStyle = 'Black';
-        this.ctx.fillText(`${6 - this.countShots }`, 600, 50)
-        if(this.reload){
+
+        const reloadImg = new Image();
+        reloadImg.src = '/docs/assets/images/bullet.png';
+        if(this.countShots <= 0){
+            this.ctx.drawImage(reloadImg, 700, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 750, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 800, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 850, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 900, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 950, 20, 20, 25);
+            
+        }else if(this.countShots <= 1){
+            this.ctx.drawImage(reloadImg, 700, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 750, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 800, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 850, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 900, 20, 20, 25);
+
+        }else if(this.countShots <= 2){
+            this.ctx.drawImage(reloadImg, 700, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 750, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 800, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 850, 20, 20, 25);
+
+        }else if(this.countShots <= 3){
+            this.ctx.drawImage(reloadImg, 700, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 750, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 800, 20, 20, 25);
+           
+
+        }else if(this.countShots <= 4){
+            this.ctx.drawImage(reloadImg, 700, 20, 20, 25);
+            this.ctx.drawImage(reloadImg, 750, 20, 20, 25);
+            
+
+        }else if(this.countShots <= 5){
+            this.ctx.drawImage(reloadImg, 700, 20, 20, 25);
+          
+            
+
+        }
+
+
+        this.ctx.drawImage(reloadImg, this.x, this.y, 50, 70);
+
+        
+        //this.ctx.fillText(`${6 - this.countShots }`, 600, 50)
+       /*  if(this.reload){
             console.log('reloading')
             this.ctx.fillText('Reloading', 700, 50)
-        }
+        } */
+
+
+        
+        
+        
 
         
 

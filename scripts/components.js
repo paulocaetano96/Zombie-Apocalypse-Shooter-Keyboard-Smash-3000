@@ -3,7 +3,7 @@
 //Player class
 //Used for the player character
 class Player {
-    constructor(x, y, width, height, hp, speed, ctx, img, name, canvas, lastKeyPressed){
+    constructor(x, y, width, height, hp, speed, ctx, img, name, canvas, lastKeyPressed, noKeyPressed){
 
         this.x = x;
         this.y = y;
@@ -27,6 +27,7 @@ class Player {
         this.movDiagRightDown = false;
         this.movDiagLeftDown = false; 
         this.lastKeyPressed = lastKeyPressed;
+        this.noKeyPressed = noKeyPressed;
         this.dx = 0;
         this.dy = 0;
         
@@ -40,9 +41,10 @@ class Player {
 
         const playerImg = new Image();
         playerImg.src = this.img;
-        if(this.lastKeyPressed == 'ArrowLeft' || this.lastKeyPressed == 'ArrowUp') this.dy = 50;
+        if(this.noKeyPressed == 'None' && this.lastKeyPressed == 'ArrowRight') this.dy = 110;
+        else if(this.noKeyPressed == 'None' && this.lastKeyPressed == 'ArrowLeft') this.dy = 165;
+        else if(this.lastKeyPressed == 'ArrowLeft' || this.lastKeyPressed == 'ArrowUp') this.dy = 50;
         else if(this.lastKeyPressed == 'ArrowRight' || this.lastKeyPressed == 'ArrowDown') this.dy = 0;
-        else if(this.lastKeyPressed == 'None') this.dy = 110;
         this.ctx.drawImage(playerImg, this.dx, this.dy, 40, 50, this.x, this.y, 50, 75);
         
         
@@ -89,13 +91,23 @@ class Player {
     }
 
     healthBar(){
-        this.ctx.fillStyle = 'Gray'
-        this.ctx.fillRect(50, 15, this.initialHp + 20, 50)
+        
+       
+        
+        
         if((this.hp / this.initialHp) * 100 < 25) this.ctx.fillStyle = 'Red';
         else if((this.hp / this.initialHp) * 100 > 25 && (this.hp / this.initialHp) * 100 < 50) this.ctx.fillStyle = 'Orange';
         else if((this.hp / this.initialHp) * 100 >= 50 && (this.hp / this.initialHp) * 100 < 75) this.ctx.fillStyle = 'Yellow';
         else if((this.hp / this.initialHp) * 100 >= 75) this.ctx.fillStyle = 'Green';
         this.ctx.fillRect(60, 25, this.hp, 30)
+
+
+        const healthBarImg = new Image();
+        healthBarImg.src = '/docs/assets/images/health_bar.png';
+        this.ctx.drawImage(healthBarImg, 43, 13, this.initialHp + 23, 50);
+
+        /* this.ctx.fillStyle = 'Gray'
+        this.ctx.fillRect(50, 15, this.initialHp + 20, 50) */
     }
 
     crashWith(enemy){
