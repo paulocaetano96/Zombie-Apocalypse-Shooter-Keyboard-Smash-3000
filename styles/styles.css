@@ -98,7 +98,7 @@ body {
     border-radius: 50px;
     margin-right: 80px !important;
     border-color: antiquewhite;
-    background-image: url('https://res.cloudinary.com/dkoe4o8w1/image/upload/v1675351062/canvas-background_vqmg91.png');
+    background-image: url(https://res.cloudinary.com/dkoe4o8w1/image/upload/v1675351062/canvas-background_vqmg91.png);
     background-size: cover;
 }
 
