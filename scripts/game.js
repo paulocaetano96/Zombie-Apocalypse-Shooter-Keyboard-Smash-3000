@@ -210,7 +210,7 @@ class Game {
         let randomY = Math.floor(Math.random() * this.canvas.height) ; 
         let randomArray = [{x : 0, y : randomY}, {x :this.canvas.width, y: randomY},{x: randomX,y:0},{x:randomX, y:this.canvas.height}];  
         let randomIndex = Math.floor(Math.random() * randomArray.length);
-        let spritesArray = ['./docs/assets/images/nun_sprite.png', '../docs/assets/images/zombies_sprite.png']
+        let spritesArray = ['./docs/assets/images/nun_sprite.png', './docs/assets/images/zombies_sprite.png']
         let randomSprite = Math.floor(Math.random() * spritesArray.length)
         
 
@@ -221,7 +221,7 @@ class Game {
 
          if (this.frames === 800) {             //criação do boss após x tempo
 
-            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx, '../docs/assets/images/Boss_Sprite.png', this.shot, 'Boss'));
+            this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx, './docs/assets/images/Boss_Sprite.png', this.shot, 'Boss'));
          }
 
     }
