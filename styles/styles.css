@@ -337,7 +337,6 @@ form div {
 .end-screen {
     display: none;
     z-index: 50;
-    background-color: rgba(0,0,0,0.8);
     color: antiquewhite;
     height: 400px;
     width: 400px;
@@ -349,6 +348,46 @@ form div {
     padding-right: 40px;
     z-index: 100;
     margin-top: 80px;
+    animation: party 10s infinite ;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes party {
+    0% {
+        background-color: rgb(243, 48, 214, 0.7);
+        border: 5px ridge rgb(0, 0, 0);
+        color:black;
+        font-weight: bold;
+      }
+    25% {
+        background-color: rgba(255, 21, 0, 0.7);
+        border: 5px ridge rgb(0, 109, 9);
+        color:pink;
+        font-weight: bold;
+      }
+    50% {
+        background-color: rgba(16, 210, 249, 0.7);
+        border: 5px ridge rgb(118, 0, 0);
+        color:black;
+        font-weight: bold;
+      }
+    75% {
+        background-color: rgba(0, 255, 21, 0.7);
+        border: 5px ridge rgb(142, 0, 132);
+        color:pink;
+      }
+    95% {
+        background-color: rgba(47, 54, 255, 0.7);
+        border: 5px ridge rgb(9, 155, 1);
+        color: blueviolet;
+        font-weight: bold;
+      }
+    100% {
+        background-color: rgb(243, 48, 214, 0.7); /* The image width * 2 */
+        border: 5px ridge black;
+        color:black;
+    }
 }
 
 /* #end-game-condition{
