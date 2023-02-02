@@ -11,13 +11,13 @@ let bulletImg = 'docs/assets/images/bullet.png';
 
 
 
-const player = new Player(canvas.width / 2, canvas.height / 2, 70, 50, 100, 5, ctx, playerImg, 'Ramiro', canvas)
-const shot   = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 0)
-const shot2  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 1)
-const shot3  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 2)
-const shot4  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 3)
-const shot5  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 4)
-const shot6  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 5)
+const player = new Player(canvas.width / 2, canvas.height / 2, 70, 50, 100, 5, ctx, playerImg, 'Ramiro', canvas);
+const shot   = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 0);
+const shot2  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 1);
+const shot3  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 2);
+const shot4  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 3);
+const shot5  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 4);
+const shot6  = new Shooting(player.x, player.y, player, canvas, bulletImg, 8, ctx, lastKeyPressed, 5);
 const magazine = [shot, shot2, shot3, shot4, shot5, shot6];
 const reload = new Reload(magazine, 2000, 5, ctx);
 //const boss = new Boss(120, 120, 100, 100, 200, ctx, '../docs/assets/images/bossImage.png', shot, 'Boss')

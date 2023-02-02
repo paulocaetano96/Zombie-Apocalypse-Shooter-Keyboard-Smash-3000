@@ -30,7 +30,7 @@ class Shooting{
         this.y = this.player.y;
         //this.intervalId = setInterval(this.update, 10, lastKey)
         this.shotFired = true;
-        console.log(this.index)
+        
         
         
     }
@@ -135,7 +135,7 @@ class Shooting{
     stopShot(){
 
         clearInterval(this.intervalId);
-        console.log('SHOT STOP')
+
         //this.shotFired = false;
        
         
@@ -165,7 +165,7 @@ class Reload {
 
         if(!this.reload){
             this.magazine[this.countShots].firstShot();
-            console.log(this.magazine[this.countShots])
+          
             this.countShots ++;
         
 

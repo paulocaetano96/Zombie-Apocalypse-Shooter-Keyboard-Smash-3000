@@ -123,7 +123,7 @@ class Player {
 //Used for the normal enemies
 class Enemy {
 
-    constructor(x, y, width, height, hp, ctx, img, shot, enemyType){
+    constructor(x, y, width, height, hp, ctx, img, shot, enemyType, player){
 
         this.x = x;
         this.y = y;
@@ -134,6 +134,7 @@ class Enemy {
         this.img = img;
         this.shot = shot;
         this.enemyType = enemyType;
+        this.player = player;
         this.dx = 0;
         this.dy = 0;
         this.movLeft = null;
@@ -147,6 +148,7 @@ class Enemy {
         this.movDown = false;
         this.startX = 0;
         this.startY = 0;
+        this.actualDirection = '';
        
        
         
@@ -258,7 +260,7 @@ class Boss extends Enemy {
 
     newPos(){
 
-        if(player.x < this.x) {
+        if(this.player.x < this.x) {
             this.x -=1;
 
         } else{
@@ -266,14 +268,14 @@ class Boss extends Enemy {
 
         } 
 
-        if(player.y < this.y) this.y -=1;
+        if(this.player.y < this.y) this.y -=1;
         else this.y +=1;
 
 
-        console.log(this.y)
+        
 
         //Boss moving Left Top
-        if((player.x == this.x || player.x == this.x + 1 ||player.x == this.x - 1 ) && player.y > this.y){
+        if((this.player.x == this.x || this.player.x == this.x + 1 ||this.player.x == this.x - 1 ) && this.player.y > this.y){
             this.movLeft = false;
             this.movRight = false;
             this.movTop = false;
@@ -282,9 +284,10 @@ class Boss extends Enemy {
             this.movDiagLeftTop = false;
             this.movDiagRightDown = false;
             this.movDiagLeftDown = false; 
+            this.actualDirection = 'Down';
 
         //Boss moving Top    
-        }else if((player.x == this.x || player.x == this.x + 1 ||player.x == this.x - 1 ) && player.y < this.y){
+        }else if((this.player.x == this.x || this.player.x == this.x + 1 ||this.player.x == this.x - 1 ) && this.player.y < this.y){
             this.movLeft = false;
             this.movRight = false;
             this.movTop = true;
@@ -293,9 +296,10 @@ class Boss extends Enemy {
             this.movDiagLeftTop = false;
             this.movDiagRightDown = false;
             this.movDiagLeftDown = false; 
+            this.actualDirection = 'Top';
 
         //Boss moving Left    
-        }else if((player.y == this.y || player.y == this.y + 1 || player.y == this.y - 1) && player.x < this.x){
+        }else if((this.player.y == this.y || this.player.y == this.y + 1 || this.player.y == this.y - 1) && this.player.x < this.x){
             this.movLeft = true;
             this.movRight = false;
             this.movTop = false;
@@ -304,9 +308,10 @@ class Boss extends Enemy {
             this.movDiagLeftTop = false;
             this.movDiagRightDown = false;
             this.movDiagLeftDown = false;
+            this.actualDirection = 'Left';
 
         //Boss moving Right    
-        } else if((player.y == this.y || player.y == this.y + 1 || player.y == this.y - 1) && player.x > this.x){
+        } else if((this.player.y == this.y || this.player.y == this.y + 1 || this.player.y == this.y - 1) && this.player.x > this.x){
             this.movLeft = false;
             this.movRight = true;
             this.movTop = false;
@@ -315,9 +320,10 @@ class Boss extends Enemy {
             this.movDiagLeftTop = false;
             this.movDiagRightDown = false;
             this.movDiagLeftDown = false;
+            this.actualDirection = 'Right';
 
         //Boss moving Left Top
-        }else if(player.x < this.x && player.y < this.y){
+        }else if(this.player.x < this.x && this.player.y < this.y){
             this.movLeft = false;
             this.movRight = false;
             this.movTop = false;
@@ -325,10 +331,11 @@ class Boss extends Enemy {
             this.movDiagRightTop = false;
             this.movDiagLeftTop = true;
             this.movDiagRightDown = false;
-            this.movDiagLeftDown = false;          
+            this.movDiagLeftDown = false;  
+            this.actualDirection = 'LeftTop';        
         
         //Boss moving Left Down
-        }else if(player.x < this.x && player.y > this.y){
+        }else if(this.player.x < this.x && this.player.y > this.y){
             this.movLeft = false;
             this.movRight = false;
             this.movTop = false;
@@ -337,9 +344,10 @@ class Boss extends Enemy {
             this.movDiagLeftTop = false;
             this.movDiagRightDown = false;
             this.movDiagLeftDown = true; 
+            this.actualDirection = 'LeftDown';
         
         //Boss moving Right Top    
-        }else if(player.x > this.x && player.y < this.y){
+        }else if(this.player.x > this.x && this.player.y < this.y){
             this.movLeft = false;
             this.movRight = false;
             this.movTop = false;
@@ -348,9 +356,10 @@ class Boss extends Enemy {
             this.movDiagLeftTop = false;
             this.movDiagRightDown = false;
             this.movDiagLeftDown = false; 
+            this.actualDirection = 'RightTop';
          
         //Boss moving right Down    
-        }else if(player.x > this.x && player.y > this.y){
+        }else if(this.player.x > this.x && this.player.y > this.y){
             this.movLeft = false;
             this.movRight = false;
             this.movTop = false;
@@ -359,35 +368,69 @@ class Boss extends Enemy {
             this.movDiagLeftTop = false;
             this.movDiagRightDown = true;
             this.movDiagLeftDown = false; 
+            this.actualDirection = 'RightDown';
 
         //Boss moving Down    
         } 
+    }  
+    
+}
+
+class SpecialAttack extends Enemy {
+    constructor(x, y, widht, height, hp, ctx, img, shot, enemyType, player ,playerPosX, playerPosY, direction){
+        super(x, y, widht, height, hp, ctx, img, shot, enemyType, player);
+        this.playerPosX = playerPosX;
+        this.playerPosY = playerPosY;
+        this.direction = direction;
+
     }
 
+    draw(){
+
+        /* const attackImg = new Image();
+        attackImg.src = this.img;
+        if(this.movLeft)this.dy = 0;
+        else if(this.movRight) this.dy = 52;
+        this.ctx.drawImage(attackImg, this.dx, this.dy, 40, 50, this.x, this.y, 50, 70); */
+
+        this.ctx.fillStyle = 'Black';
+        this.ctx.fillRect(this.x, this.y, 100, 20);
         
 
-    update = () => {
-
-        //this.setintervalId = setInterval(this.specialAttack, 4000);
-        console.log('callback')
-        this.update();
-        
+    
 
     }
-    specialAttack(){
 
+
+
+    newPos(){
+
+        console.log(this.direction)
+
+        if(this.direction == 'Left')this.x -= 5;
+        else if(this.direction == 'Right')this.x += 5;
+        else if(this.direction == 'Top')this.y -= 5;
+        else if(this.direction == 'Down')this.y += 5;
+        else if(this.direction == 'RightTop'){
+            this.x += 5;
+            this.y -= 5;
+        }else if(this.direction == 'LeftTop'){
+            this.x -= 5;
+            this.y -= 5;
+        }else if(this.direction == 'RightDown'){
+            this.x += 5;
+            this.y += 5;
+
+        }else if(this.direction == 'LeftDown'){
+            this.x -= 5;
+            this.y += 5;
+        }
+        
+        
+
+        
        
-   /*  const attackImg = new Image();
-    attackImg.src = this.img;
-    if(this.movLeft)this.dy = 0;
-    else if(this.movRight) this.dy = 52;
-    this.ctx.drawImage(enemyImg, this.dx, this.dy, 40, 50, this.x, this.y, 50, 70); */
-    
-    this.ctx.drawImage(this.bullet, this.x, this.y, this.width, this.height) 
-    
         
-
     }
-    
-    
+
 }
