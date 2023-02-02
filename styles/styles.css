@@ -14,7 +14,7 @@ body {
 #scrolling-background-image {
     z-index: -50;
     position: absolute;
-    background: url('/docs/assets/images/backgroundimg.jpg') repeat-x;
+    background: url('./docs/assets/images/backgroundimg.jpg') repeat-x;
     height: 100vh;
     width: 3840px;
     animation: slide 25s linear infinite;
