@@ -104,6 +104,38 @@
         
     </div>
 
+
+    <script>
+        let firstPlaceName = document.getElementById("first-place-name");
+        firstPlaceName.textContent = localStorage.getItem("playerName");
+    </script>
+    <script>
+        let scores = JSON.parse(localStorage.getItem("scores")) || [];
+        for (let i = 0; i < scores.length; i++) {
+          let scoreId = "first-place-score";
+          if (i === 1) {
+            scoreId = "second-place-score";
+          } else if (i === 2) {
+            scoreId = "third-place-score";
+          } else if (i === 3) {
+            scoreId = "fourth-place-score";
+          } else if (i === 4) {
+            scoreId = "fifth-place-score";
+          } else if (i === 5) {
+            scoreId = "sixth-place-score";
+          } else if (i === 6) {
+            scoreId = "seventh-place-score";
+          } else if (i === 7) {
+            scoreId = "eigth-place-score";
+          } else if (i === 8) {
+            scoreId = "ninth-place-score";
+          } else if (i === 9) {
+            scoreId = "tenth-place-score";
+          }
+          
+          document.getElementById(scoreId).textContent = scores[i];
+        }
+    </script>
     <script src="./scripts/highscore.js"></script>   
     <script src="./scripts/bindings.js"></script>   
     <script src="./scripts/components.js"></script>
