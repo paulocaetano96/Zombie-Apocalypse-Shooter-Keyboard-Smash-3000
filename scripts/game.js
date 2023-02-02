@@ -91,14 +91,6 @@ class Game {
         clearInterval(this.intervalId);  
         gameStarted = false; 
 
-        /* updating the score HTML page */
-        let playerScore = this.score;
-        let previousScores = JSON.parse(localStorage.getItem("scores")) || [];
-        previousScores.push(playerScore);
-        previousScores.sort((a, b) => b - a);   
-        previousScores = previousScores.slice(0, 10);
-        localStorage.setItem("scores", JSON.stringify(previousScores));
-
     }
 
     clear() {
